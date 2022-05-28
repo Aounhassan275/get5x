@@ -45,6 +45,7 @@
                     <p>$ {{number_format(Auth::user()->balance, 2)}}</p>
                 </div>
             </div>
+            @if(Auth::user()->package)
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo promo2">
                     {{-- <i class="fa fa-truck"></i> --}}
@@ -59,6 +60,7 @@
                     <p>{{Auth::user()->a_date->format('d M,Y')}}</p>
                 </div>
             </div>
+            @endif
             @if(Auth::user()->withdraws)
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo promo4">
