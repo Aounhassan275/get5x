@@ -18,15 +18,118 @@
 
                     <div class="d-inline-block mt-2 mr-3">
 
+
                         <i class="feather-lg text-info" data-feather="dollar-sign"></i>
 
                     </div>
 
                     <div class="media-body">
+                        @php  
+                            $expense_income= App\Models\CompanyAccount::expense_income();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$expense_income->balance, 2)}}</h3>
 
-                        <h3 class="mb-2">$ </h3>
+                        <div class="mb-0">Expense Income</div>
 
-                        <div class="mb-0">Available Balance</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+
+                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $flash_income= App\Models\CompanyAccount::flash_income();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$flash_income->balance, 2)}}</h3>
+
+                        <div class="mb-0">Flash Income</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+
+                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $reward_income= App\Models\CompanyAccount::reward_income();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$reward_income->balance, 2)}}</h3>
+
+                        <div class="mb-0">Reward Income</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="row">
+    
+    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+
+                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $loss_income= App\Models\CompanyAccount::loss_income();
+                        @endphp
+                        <h3 class="mb-2">$ {{number_format(@$loss_income->balance, 2)}}</h3>
+
+                        <div class="mb-0">Loss Income</div>
 
                     </div>
 
@@ -53,11 +156,11 @@
 
                     <div class="media-body">
                         @php  
-                            $company_account= App\Models\CompanyAccount::find(1);
+                            $salary= App\Models\CompanyAccount::salary();
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$company_account->balance, 2)}}</h3>
+                        <h3 class="mb-2">$ {{number_format(@$salary->balance, 2)}}</h3>
 
-                        <div class="mb-0">Company Account Balance</div>
+                        <div class="mb-0">Salary Balance</div>
 
                     </div>
 
@@ -96,7 +199,6 @@
         </div>
 
     </div>
-
 </div>
 <div class="row">
     <div class="col-lg-12">

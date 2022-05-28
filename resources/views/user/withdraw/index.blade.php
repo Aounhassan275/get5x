@@ -1,79 +1,72 @@
 @extends('user.layout.index')
-@section('contents')
-
-<div class="row mb-2 mb-xl-4">
-    <div class="col-auto d-none d-sm-block">
-    <h3>VIEW WITHDRAW REQUESTS | GET 5X</h3>
-    </div>
+@section('content')
+<div class="product-big-title-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="product-bit-title text-center">
+					<h2>WITHDRAWS</h2>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="col-12 ">
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title">View Withdraw Requests </h5>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="order_review" style="position: relative;">
+                    <table class="shop_table">
+                        <thead>
+                            <tr>
+                                <th>Sr#</th>
+                                <th>Account Name</th>
+                                <th>Account Number</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            @foreach (Auth::user()->withdraws as $key => $withdraw)
+                                <tr class="cart-subtotal">
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$withdraw->name}}</td>
+                                    <td>{{$withdraw->account}}</td>
+                                    <td>{{$withdraw->payment}}</td>
+                                    <td>{{$withdraw->method}}</td>
+                                    <td> @if($withdraw->status=="Completed")
+                                        <span class="badge badge-success">{{$withdraw->status}}</span>
+                                        @elseif($withdraw->status=="in process")
+                                        <span class="badge badge-danger">{{$withdraw->status}}</span>
+                                        @else
+                                        <span class="badge badge-primary">{{$withdraw->status}}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($withdraw->status=="Completed")
+                                        @elseif($withdraw->status=="in process")
+                                        @else
+                                        <a href="{{route('user.withdraw.edit',$withdraw->id)}}"><button class="btn btn-primary">Edit</button></a>
+                                        <form action="{{route('user.withdraw.destroy',$withdraw->id)}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                        <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                        @endif
+
+                                    </td>
+                    
+                                </tr>
+                            @endforeach
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
         </div>
-        <table class="table" id="datatables-reponsive">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>User Name</th>
-                    <th>User Email</th>
-                    <th>User Balance</th>
-                    <th>Amount Withdraw</th>
-                    <th>Account Name</th>
-                    <th>Account Number</th>
-                    <th>Method</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                                        <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (Auth::user()->withdraws as $key => $withdraw)
-                <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$withdraw->user->name}}</td>
-                    <td>{{$withdraw->user->email}}</td>
-                    <td>{{$withdraw->user->balance}}</td>
-                    <td>{{$withdraw->payment}}</td>
-                    <td>{{$withdraw->name}}</td>
-                    <td>{{$withdraw->account}}</td>
-                    <td>{{$withdraw->method}}</td>
-                    <td> @if($withdraw->status=="Completed")
-                        <span class="badge badge-success">{{$withdraw->status}}</span>
-                        @elseif($withdraw->status=="in process")
-                        <span class="badge badge-danger">{{$withdraw->status}}</span>
-                        @else
-                        <span class="badge badge-primary">{{$withdraw->status}}</span>
-                        @endif
-                    </td>
-                     @if($withdraw->status=="Completed")
-                        @elseif($withdraw->status=="in process")
-                        @else
-                    <td><a href="{{route('user.withdraw.edit',$withdraw->id)}}"><button class="btn btn-primary">Edit</button></a></td>
-                             <td>
-                    <form action="{{route('user.withdraw.destroy',$withdraw->id)}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                    <button class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-                
-                        @endif 
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
 </div>
 
-@endsection
-@section('scripts')
-<script>
-    $(function() {
-        // Datatables Responsive
-        $("#datatables-reponsive").DataTable({
-            responsive: true
-        });
-    });
-</script>
 @endsection

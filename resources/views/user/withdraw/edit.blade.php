@@ -1,50 +1,94 @@
 @extends('user.layout.index')
-@section('contents')
-
-<div class="row mb-2 mb-xl-4">
-    <div class="col-auto d-none d-sm-block">
-    <h3>Withdraw Edit | GET 5X</h3>
-    </div>
+@section('content')
+<div class="product-big-title-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="product-bit-title text-center">
+					<h2>EDIT WITHDRAW</h2>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Edit Withdraw Request</h5>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{route('user.withdraw.update',$withdraw->id)}}" >
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" action="{{route('user.withdraw.update',$withdraw->id)}}" class="checkout" method="post" name="checkout">
                     @method('PUT')
-                    @csrf                   
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label class="form-label">Withdraw Payment</label>
-                            <input type="number" min="{{Auth::user()->package->min}}" max="{{Auth::user()->package->max}}"   name="payment" class="form-control" value="{{$withdraw->payment}}" required>                        
-                          <input class="form-control" type="hidden" name="id" value="{{$withdraw->id}}" required/>
+                    @csrf
+                    <div id="customer_details" class="col2-set">
+                        <div class="col-1">
+                            <input class="form-control" type="hidden" name="id" value="{{$withdraw->id}}" required/>
+                            <div class="woocommerce-billing-fields">
+                                <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                    <label class="" for="billing_first_name">Withdraw Payment <abbr title="required" class="required">*</abbr>
+                                    </label>
+                                    <input type="text"  value="{{$withdraw->payment}}" placeholder="" id="billing_first_name" name="payment" class="input-text ">
+                                </p>
+                            </div>
                         </div>
-                        <div class="form-group col-6">
-                            <label class="form-label">Account Holder Name</label>
-                            <input type="text" name="name" value="{{$withdraw->name}}" class="form-control" placeholder="Enter Account Holder Name" required>
-                        <input type="hidden" name="status" class="form-control border-teal border-1" value="in process" required>
+
+                        <div class="col-2">
+                            <div class="woocommerce-shipping-fields">
+                                <div class="shipping_address" style="display: block;">
+                                    <input class="form-control" type="hidden" name="id" value="{{$withdraw->id}}" required/>
+
+                                    <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
+                                        <label class="" for="shipping_first_name">Account Holder Name <abbr title="required" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" value="{{$withdraw->name}}" placeholder="" id="shipping_first_name" name="name" class="input-text ">
+                                    </p>
+
+                                </div>
+                            </div>
+
                         </div>
-                    </div>   
-                    <div class="row">
-                      
-                        <div class="form-group col-6">
-                            <label class="form-label">Account Number</label>
-                            <input type="text" name="account" value="{{$withdraw->account}}" class="form-control bg-slate-600 border-slate-600 border-1" placeholder="Enter Account Number Please" required>
-                        </div> 
-                        <div class="form-group col-6">
-                            <label class="form-label">Payment Method</label>
-                            <select name="method" class="form-control" required>
-                                <option value="{{$withdraw->method}}">{{$withdraw->method}}</option>
-                                <option value="Perfect Money">Perfect Money</option>
-                            </select>
-              
+                        <div class="col-2">
+                            <div class="woocommerce-shipping-fields">
+                                <div class="shipping_address" style="display: block;">
+                                    <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
+                                        <label class="" for="shipping_first_name">Account Number <abbr title="required" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" value="{{$withdraw->account}}" placeholder="" id="shipping_first_name" name="account" class="input-text ">
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <div id="customer_details" class="col2-set">
+                        <div class="col-1">
+                            <div class="woocommerce-billing-fields">
+                                <p id="billing_country_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
+                                    <label class="" for="billing_country">Payment Method <abbr title="required" class="required">*</abbr>
+                                    </label>
+                                    <select class="country_to_state country_select" id="billing_country" name="method">
+                                        <option value="">Select a Payment Method</option>
+                                        @foreach(App\Models\Source::all() as $source)
+                                            <option @if($source->name == $withdraw->method) selected @endif value="{{$source->name}}">{{$source->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="woocommerce-shipping-fields">
+                                <div class="shipping_address" style="display: block;">
+                                    
+                                    <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
+                                        <label class="" for="billing_country"> <abbr title="required" class="required">*</abbr>
+                                        </label>
+                                        <input type="submit" data-value="Update Withdraw" value="Update Withdraw" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

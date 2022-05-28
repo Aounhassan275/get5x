@@ -29,10 +29,10 @@ class DepositController extends Controller
             $refer_by = User::find($user->refer_by);
             if($user->refer_type == 'Left')
             { 
-                RefferralHelper::DirectLeftRefferral($user,$refer_by,$direct_income,$company_account);
+                RefferralHelper::DirectLeftRefferral($user,$refer_by,$direct_income,$matching_income);
             }
             else{
-                RefferralHelper::DirectRightRefferral($user,$refer_by,$direct_income,$company_account);
+                RefferralHelper::DirectRightRefferral($user,$refer_by,$direct_income,$matching_income);
             }    
             $company_account->update([
                 'balance' => $company_account->balance -= $direct_income,

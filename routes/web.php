@@ -140,16 +140,13 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('referral_tree/{id}','ReferralController@showTree')->name('referral_tree.index');
     Route::get('left_refferal/{id}','ReferralController@leftReferral')->name('left_refferal.index');
     Route::get('right_refferal/{id}','ReferralController@RightReferral')->name('right_refferal.index');
-    /******************TRANSCATIONS  ROUTES****************/
-    Route::resource('transcation', 'TranscationController'); 
-    /******************PIN  ROUTES****************/
-    Route::view('pin/used', 'user.pin.used')->name('pin.used');
-    Route::resource('pin', 'PinController'); 
-    Route::resource('pin_used', 'PinUsedController'); 
-});
+    Route::view('direct_earning', 'user.earning.direct'); 
+    Route::view('matching_earning', 'user.earning.matching'); 
+
 
 
     
+});
 });
 
 // Route::post('user/deposit', 'User\DepositController@store')->name('user.deposit.store');

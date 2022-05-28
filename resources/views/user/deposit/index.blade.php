@@ -1,10 +1,15 @@
 @extends('user.layout.index')
-@section('contents')
-
-<div class="row mb-2 mb-xl-4">
-    <div class="col-auto d-none d-sm-block">
-    <h3>Deposit | GET 5X</h3>
-    </div>
+@section('content')
+<div class="product-big-title-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="product-bit-title text-center">
+					<h2>DEPOSIT</h2>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 @if(@$payment->image)
 <div class="row">
@@ -13,38 +18,71 @@
     </div>
 </div>
 @endif
-<div class="row" style="margin-top:5px;">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Add Deposit Information For Package</h5>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{route('user.deposit.store')}}" >
-                   @csrf
-                   <div class="row">
-                    <input type="hidden" name="pakage_id" value="{{$package}}">
-                    <input type="hidden" name="method" value="{{$payment}}">
-                    <input type="hidden" class="form-control text-violet" name="package_id" value="{{$package->id}}">
-                        <div class="form-group col-6">
-                            <label class="form-label">Trancation ID#</label>
-                            <input type="number" class="form-control" name="t_id" value="" required>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" action="{{route('user.deposit.store')}}" class="checkout" method="post" name="checkout">
+                    @csrf
+                    <div id="customer_details" class="col2-set">
+                        <div class="col-1">
+                            <div class="woocommerce-billing-fields">
+                                <input type="hidden" name="pakage_id" value="{{$package}}">
+                                <input type="hidden" name="method" value="{{$payment}}">
+                                <input type="hidden" class="form-control text-violet" name="package_id" value="{{$package->id}}">
+                                
+                                <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                    <label class="" for="billing_first_name">Trancation ID# <abbr title="required" class="required">*</abbr>
+                                    </label>
+                                    <input type="text" value="" placeholder="" id="billing_first_name" name="t_id" class="input-text ">
+                                </p>
+                            </div>
                         </div>
-                        <div class="form-group col-6">
-                            <label class="form-label">Deposit Amount</label>
-                            <input type="number" class="form-control text-violet" name="amount" value="{{$package->price}}" readonly>
+
+                        <div class="col-2">
+                            <div class="woocommerce-shipping-fields">
+                                <div class="shipping_address" style="display: block;">
+                                    
+                                    <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
+                                        <label class="" for="shipping_first_name">Deposit Amount <abbr title="required" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" value="{{$package->price}}" readonly placeholder="" id="shipping_first_name" name="amount" class="input-text ">
+                                    </p>
+
+                                </div>
+                            </div>
+
                         </div>
-                    </div>   
-                    <div class="row">
-                      
-                        <div class="form-group col-12">
-                            <label class="form-label">Payment Method</label>
-                            <input type="text" class="form-control text-violet" name="payment" value="{{$payment->method}}" readonly>
-              
+                        <div class="col-2">
+                            <div class="woocommerce-shipping-fields">
+                                <div class="shipping_address" style="display: block;">
+                                    <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
+                                        <label class="" for="shipping_first_name">Payment Method <abbr title="required" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" value="{{$payment->method}}" placeholder="" id="shipping_first_name" name="payment" class="input-text ">
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+                    <div id="order_review" style="position: relative;">
+                        <div id="payment">
+
+                            <div class="form-row place-order">
+
+                                <input type="submit" data-value="Deposit Now" value="Deposit Now" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+
+
+                            </div>
+
+                            <div class="clear"></div>
+
+                        </div>
                     </div>
                 </form>
             </div>

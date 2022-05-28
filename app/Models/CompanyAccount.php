@@ -27,4 +27,5 @@ class CompanyAccount extends Model
     public static function salary(){
         return (new static)::where('name','Salary')->first();
     }
+    
 }
