@@ -26,7 +26,7 @@
                         @php  
                             $expense_income= App\Models\CompanyAccount::expense_income();
                         @endphp
-                        <h3 class="mb-2">PKR{{number_format(@$expense_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$expense_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Expense Income</div>
 
@@ -58,7 +58,7 @@
                         @php  
                             $product_income= App\Models\CompanyAccount::product_income();
                         @endphp
-                        <h3 class="mb-2">PKR{{number_format(@$product_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$product_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Product Income</div>
 
@@ -90,7 +90,7 @@
                         @php  
                             $flash_income= App\Models\CompanyAccount::flash_income();
                         @endphp
-                        <h3 class="mb-2">PKR{{number_format(@$flash_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$flash_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Flash Income</div>
 
@@ -122,7 +122,7 @@
                         @php  
                             $reward_income= App\Models\CompanyAccount::reward_income();
                         @endphp
-                        <h3 class="mb-2">PKR{{number_format(@$reward_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$reward_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Reward Income</div>
 
@@ -158,7 +158,7 @@
                         @php  
                             $matching_income= App\Models\CompanyAccount::matching_income();
                         @endphp
-                        <h3 class="mb-2">PKR{{number_format(@$matching_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$matching_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Matching Income</div>
 
@@ -190,7 +190,7 @@
                         @php  
                             $loss_income= App\Models\CompanyAccount::loss_income();
                         @endphp
-                        <h3 class="mb-2">PKR{{number_format(@$loss_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$loss_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Loss Income</div>
 
@@ -221,7 +221,7 @@
                         @php  
                             $salary= App\Models\CompanyAccount::salary();
                         @endphp
-                        <h3 class="mb-2">PKR{{number_format(@$salary->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$salary->balance, 2)}}</h3>
 
                         <div class="mb-0">Salary Balance</div>
 
@@ -249,7 +249,7 @@
                     </div>
 
                     <div class="media-body">
-                        <h3 class="mb-2">PKR{{App\Models\User::all()->sum('balance')}}</h3>
+                        <h3 class="mb-2">PKR  {{App\Models\User::all()->sum('balance')}}</h3>
 
                         <div class="mb-0">User Balance</div>
 
