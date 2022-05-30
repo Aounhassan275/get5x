@@ -62,7 +62,7 @@
                     <td>{{$key+1}}</td>
                     <td>{{$admin->name}}</td>
                     <td>{{$admin->email}}</td>
-                    <td>$ {{number_format($admin->balance, 2)}}</td>
+                    <td>PKR {{number_format($admin->balance, 2)}}</td>
                     <td class="table-action">
                         <button data-toggle="modal" data-target="#edit_modal" name="{{$admin->name}}" 
                             email="{{$admin->email}}" id="{{$admin->id}}" class="edit-btn btn"><i class="align-middle" data-feather="edit-2"></i></button>

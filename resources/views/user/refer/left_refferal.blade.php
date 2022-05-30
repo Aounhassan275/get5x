@@ -66,7 +66,7 @@
                 <thead>
                     <tr>
                         <th>LEFT USER TOTAL MATCHING INCOME:</th>
-                        <th>$ {{@$total_value}}</th>
+                        <th>PKR {{@$total_value}}</th>
                     </tr>
                 </thead>
             </table>

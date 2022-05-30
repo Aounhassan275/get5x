@@ -29,28 +29,28 @@
 
                             <tr class="cart-subtotal">
                                 <th>Package Price</th>
-                                <td><span class="amount">$ {{$package->price}} /-</span>
+                                <td><span class="amount">PKR {{$package->price}} /-</span>
                                 </td>
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Direct Income</th>
-                                <td><span class="amount">$ {{$package->matching_income}} /-</span>
+                                <td><span class="amount">PKR {{$package->matching_income}} /-</span>
                                 </td>
                             </tr>
 
                             <tr class="cart-subtotal">
                                 <th>Matching Income</th>
-                                <td><span class="amount">$ {{$package->direct_income}} /-</span>
+                                <td><span class="amount">PKR {{$package->direct_income}} /-</span>
                                 </td>
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Withdraw Limit</th>
-                                <td><span class="amount">$ {{$package->withdraw_limit}} /-</span>
+                                <td><span class="amount">PKR {{$package->withdraw_limit}} /-</span>
                                 </td>
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Income Limit</th>
-                                <td><span class="amount">$ {{$package->income_limit}} /-</span>
+                                <td><span class="amount">PKR {{$package->income_limit}} /-</span>
                                 </td>
                             </tr>
                             <tr class="cart-subtotal">

@@ -42,14 +42,14 @@
             <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo1">
                     <p>E-Wallet</p>
-                    <p>$ {{number_format(Auth::user()->balance, 2)}}</p>
+                    <p>PKR {{number_format(Auth::user()->balance, 2)}}</p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo2">
                     {{-- <i class="fa fa-truck"></i> --}}
                     <p>Auto Wallet</p>
-                    <p>$ {{number_format(Auth::user()->auto_wallet, 2)}}</p>
+                    <p>PKR {{number_format(Auth::user()->auto_wallet, 2)}}</p>
                 </div>
             </div>
             @if(Auth::user()->withdraws)
@@ -57,7 +57,7 @@
                 <div class="single-promo promo4">
                     {{-- <i class="fa fa-gift"></i> --}}
                     <p>Total Withdraw</p>
-                    <p>$ {{Auth::user()->totalWithdraw()}}</p>
+                    <p>PKR {{Auth::user()->totalWithdraw()}}</p>
                 </div>
             </div>
             @endif
@@ -94,7 +94,7 @@
             <div class="col-md-6 col-sm-6">
                 <div class="single-promo promo1">
                     <p>Total Referal Earning</p>
-                    <p>$ {{number_format(Auth::user()->r_earning, 2)}}</p>
+                    <p>PKR {{number_format(Auth::user()->r_earning, 2)}}</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">

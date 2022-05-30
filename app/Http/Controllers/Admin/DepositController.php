@@ -23,10 +23,18 @@ class DepositController extends Controller
         $package = Package::find($deposit->package_id);
         $flash_income= CompanyAccount::flash_income();
         $flash_income->update([
-            'balance' => $flash_income->balance += $deposit->amount/100 * 80,
+            'balance' => $flash_income->balance += $deposit->amount/100 * 50,
         ]);
-        $direct_income = $deposit->amount/100 * $package->direct_income;
-        $matching_income = $deposit->amount/100 * $package->matching_income;
+        $product_income= CompanyAccount::product_income();
+        $product_income->update([
+            'balance' => $product_income->balance += $deposit->amount/100 * 40,
+        ]);
+        $matching_income= CompanyAccount::matching_income();
+        $matching_income->update([
+            'balance' => $matching_income->balance += $deposit->amount/100 * 10,
+        ]);
+        $direct_income = $deposit->amount/100 * 40;
+        $matching_income = $deposit->amount/100 * 10;
         if($user->refer_by && $user->checkStatus() == 'fresh')
         {
             $refer_by = User::find($user->refer_by);
@@ -64,10 +72,6 @@ class DepositController extends Controller
         $salary= CompanyAccount::loss_income();
         $salary->update([
             'balance' => $salary->balance += $deposit->amount/100 * 1,
-        ]);
-        $matching_income= CompanyAccount::matching_income();
-        $matching_income->update([
-            'balance' => $matching_income->balance += $deposit->amount/100 * 10,
         ]);
         $deposit->update([
             'status' => 'old'

@@ -124,7 +124,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo1">
                     <p>Package Price</p>
-                    <p>$ {{number_format(Auth::user()->package->price, 2)}}</p>
+                    <p>PKR {{number_format(Auth::user()->package->price, 2)}}</p>
                 </div>
             </div>
             
@@ -146,19 +146,19 @@
                 <div class="single-promo promo1">
                     {{-- <i class="fa fa-truck"></i> --}}
                     <p>Package Withdraw Limit</p>
-                    <p>$ {{round(Auth::user()->package->withdraw_limit,2)}}</p>
+                    <p>PKR {{round(Auth::user()->package->withdraw_limit,2)}}</p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo2">
                     <p>Your Withdraw Amount</p>
-                    <p>$ {{Auth::user()->withdrawLimit()}}</p>
+                    <p>PKR {{Auth::user()->withdrawLimit()}}</p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo4">
                     <p>Pending Withdraw Amount</p>
-                    <p>$ {{Auth::user()->withdrawPending()}}</p>
+                    <p>PKR {{Auth::user()->withdrawPending()}}</p>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@
                         @endif
                     </div>
                     <div class="col-4 text-center">
-                        {{-- <i class="align-middle mr-2" data-feather="arrow-up-circle"></i><span class="text-muted">$ {{@$user->earnings()->where('type','direct_income')->sum('price')}}</span> --}}
+                        {{-- <i class="align-middle mr-2" data-feather="arrow-up-circle"></i><span class="text-muted">PKR {{@$user->earnings()->where('type','direct_income')->sum('price')}}</span> --}}
                     </div>
                     <div class="col-4 text-center">
                         @if(@$user->right_refferal)
@@ -31,7 +31,7 @@
                         @endif
                     </div>
                     <div class="col-4 text-center">
-                        <i class="align-middle mr-2" data-feather="arrow-up-circle"></i><span class="text-muted">$ {{@$user->earnings()->where('type','direct_income')->sum('price')}}</span>
+                        <i class="align-middle mr-2" data-feather="arrow-up-circle"></i><span class="text-muted">PKR {{@$user->earnings()->where('type','direct_income')->sum('price')}}</span>
                     </div>
                     <div class="col-4 text-center">
                         @if(@$user->right_refferal)

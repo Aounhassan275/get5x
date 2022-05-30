@@ -56,7 +56,7 @@
                                 <i class="feather-lg text-danger" data-feather="dollar-sign"></i>
                             </div>
                             <div class="media-body">
-                                <h3 class="mb-2">$ {{$user->balance}}</h3>
+                                <h3 class="mb-2">PKR {{$user->balance}}</h3>
                                 <div class="mb-0">User Balance</div>
                             </div>
                         </div>

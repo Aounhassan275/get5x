@@ -30,14 +30,24 @@
                             <tr class="cart-subtotal">
                                     <td>{{$key + 1}}</td>
                                     <td >{{$earning->created_at->format('M d,Y h:i A')}}</td>
-                                    <td >$ {{$earning->price}}</td>
+                                    <td >PKR {{$earning->price}}</td>
                     
                                 </tr>
                             @endforeach
                             <tr class="cart-subtotal"> 
                                 <td ></td>
                                 <td >Total Maching Income:</td>
-                                <td >$ {{Auth::user()->earnings()->where('type','matching_income')->sum('price')}}</td>
+                                <td >PKR {{Auth::user()->earnings()->where('type','matching_income')->sum('price')}}</td>
+                            </tr>
+                            <tr class="cart-subtotal"> 
+                                <td ></td>
+                                <td >Total Left Amount:</td>
+                                <td >PKR {{Auth::user()->left_amount}}</td>
+                            </tr>
+                            <tr class="cart-subtotal"> 
+                                <td ></td>
+                                <td >Total Right Amount:</td>
+                                <td >PKR {{Auth::user()->right_amount}}</td>
                             </tr>
                         </tfoot>
                     </table>

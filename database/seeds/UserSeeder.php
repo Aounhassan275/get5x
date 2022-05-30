@@ -15,15 +15,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('admins')->insert([
-            [ 'name' => 'aounhassan1',
-            'email' => 'admin1@mail.com',
+            [ 'name' => 'Admin',
+            'email' => 'getx@mail.com',
             'type' => '1',
             'password' => Hash::make('1234'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],
             
-            ['name' => 'Aounhassan2',
-            'email' => 'admin2@mail.com',
+            ['name' => 'Admin 2',
+            'email' => 'cashAli008@mail.com',
             'type' => '1',
             'password' => Hash::make('1234'),
             'created_at' => Carbon::now(),
@@ -56,6 +56,7 @@ class UserSeeder extends Seeder
             ['name' => 'Reward Income'],
             ['name' => 'Loss Income'],
             ['name' => 'Salary'],
+            ['name' => 'Product Income'],
         ]);
         DB::table('payments')->insert([
             [

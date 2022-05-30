@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\CompanyAccount;
 use App\Models\Earning;
 use App\Models\User;
 
@@ -154,9 +155,10 @@ class RefferralHelper
                         "price" => $amount,
                         "type" => 'matching_income'
                     ]);
-                    // $company_account->update([
-                    //     'balance' => $company_account->balance -= $amount,
-                    // ]);
+                    $matching_income= CompanyAccount::matching_income();
+                    $matching_income->update([
+                        'balance' => $matching_income->balance -= $amount,
+                    ]);
                 }
             }else if($chain->right_amount > $chain->left_amount)
             {
@@ -175,9 +177,10 @@ class RefferralHelper
                         "price" => $amount,
                         "type" => 'matching_income'
                     ]);
-                    // $company_account->update([
-                    //     'balance' => $company_account->balance -= $amount,
-                    // ]);
+                    $matching_income= CompanyAccount::matching_income();
+                    $matching_income->update([
+                        'balance' => $matching_income->balance -= $amount,
+                    ]);
                 }
             }else{
                 $amount = $chain->left_amount*2;
@@ -195,9 +198,10 @@ class RefferralHelper
                         "price" => $amount,
                         "type" => 'matching_income'
                     ]);
-                    // $company_account->update([
-                    //     'balance' => $company_account->balance -= $amount,
-                    // ]);
+                    $matching_income= CompanyAccount::matching_income();
+                    $matching_income->update([
+                        'balance' => $matching_income->balance -= $amount,
+                    ]);
                 }
             }
             $chain = $referrral_chain;
@@ -240,9 +244,10 @@ class RefferralHelper
                             "price" => $amount,
                             "type" => 'matching_income'
                         ]);
-                        // $company_account->update([
-                        //     'balance' => $company_account->balance -= $amount,
-                        // ]);
+                        $matching_income= CompanyAccount::matching_income();
+                        $matching_income->update([
+                            'balance' => $matching_income->balance -= $amount,
+                        ]);
                     }
                 }else if($chain->right_amount > $chain->left_amount)
                 {
@@ -261,9 +266,10 @@ class RefferralHelper
                             "price" => $amount,
                             "type" => 'matching_income'
                         ]);
-                        // $company_account->update([
-                        //     'balance' => $company_account->balance -= $amount,
-                        // ]);
+                        $matching_income= CompanyAccount::matching_income();
+                        $matching_income->update([
+                            'balance' => $matching_income->balance -= $amount,
+                        ]);
                     }
                 }else{
                     $amount = $chain->left_amount*2;
@@ -281,9 +287,10 @@ class RefferralHelper
                             "price" => $amount,
                             "type" => 'matching_income'
                         ]);
-                        // $company_account->update([
-                        //     'balance' => $company_account->balance -= $amount,
-                        // ]);
+                        $matching_income= CompanyAccount::matching_income();
+                        $matching_income->update([
+                            'balance' => $matching_income->balance -= $amount,
+                        ]);
                     }
                 }
                 $chain = $referrral_chain;
@@ -313,9 +320,10 @@ class RefferralHelper
                     "price" => $amount,
                     "type" => 'matching_income'
                 ]);
-                // $company_account->update([
-                //     'balance' => $company_account->balance -= $amount,
-                // ]);
+                $matching_income= CompanyAccount::matching_income();
+                $matching_income->update([
+                    'balance' => $matching_income->balance -= $amount,
+                ]);
             }
         }else if($chain->right_amount > $chain->left_amount)
         {
@@ -334,9 +342,10 @@ class RefferralHelper
                     "price" => $amount,
                     "type" => 'matching_income'
                 ]);
-                // $company_account->update([
-                //     'balance' => $company_account->balance -= $amount,
-                // ]);
+                $matching_income= CompanyAccount::matching_income();
+                $matching_income->update([
+                    'balance' => $matching_income->balance -= $amount,
+                ]);
             }
         }else{
             $amount = $chain->left_amount*2;
@@ -354,9 +363,10 @@ class RefferralHelper
                     "price" => $amount,
                     "type" => 'matching_income'
                 ]);
-                // $company_account->update([
-                //     'balance' => $company_account->balance -= $amount,
-                // ]);
+                $matching_income= CompanyAccount::matching_income();
+                $matching_income->update([
+                    'balance' => $matching_income->balance -= $amount,
+                ]);
             }
         }
     }

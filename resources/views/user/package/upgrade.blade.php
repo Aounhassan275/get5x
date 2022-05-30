@@ -15,21 +15,21 @@
                     <div class="card-body d-flex flex-column">
                         <div class="mb-4">
                             <h5>{{$package->name}}</h5>
-                            <span class="display-4">$ {{$package->price}} /-</span><br>                           
+                            <span class="display-4">PKR {{$package->price}} /-</span><br>                           
                         </div>
                         <h6>Includes:</h6>
                         <ul class="list-unstyled">
                             <li class="mb-2">
-                                Direct Income : $ {{$package->direct_income}} /-
+                                Direct Income : PKR {{$package->direct_income}} /-
                             </li>
                             <li class="mb-2">
-                                Matching Income : $ {{$package->matching_income}} /-
+                                Matching Income : PKR {{$package->matching_income}} /-
                             </li>
                             <li class="mb-2">
-                                Withdraw Limit : $ {{$package->withdraw_limit}}
+                                Withdraw Limit : PKR {{$package->withdraw_limit}}
                             </li>
                             <li class="mb-2">
-                                Income Limit : $ {{$package->income_limit}}
+                                Income Limit : PKR {{$package->income_limit}}
                             </li>
                         </ul>
                         <div class="mt-auto">

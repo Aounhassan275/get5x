@@ -142,6 +142,9 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     Route::get('right_refferal/{id}','ReferralController@RightReferral')->name('right_refferal.index');
     Route::view('direct_earning', 'user.earning.direct'); 
     Route::view('matching_earning', 'user.earning.matching'); 
+    
+    Route::get('products', 'ProductController@showProducts')->name('product.index');
+    Route::get('product/{name}', 'ProductController@showProductDetails')->name('product.show');
 
 
 

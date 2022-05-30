@@ -33,8 +33,8 @@
                 <td>{{$deposit->user->email}}</td>
                 <td>{{$deposit->package->name}}</td>
                 <td>{{$deposit->amount}}</td>
-                <td>{{$deposit->payment}}</td>
                 <td>{{$deposit->t_id}}</td>
+                <td>{{$deposit->payment}}</td>
                 <td>{{Carbon\Carbon::parse($deposit->updated_at)->format('d M,Y')}}</td>
                 <td><a href="{{route('admin.deposit.delete',$deposit->id)}}"><button class="btn btn-danger">Delete</button></a></td>
                 </tr>

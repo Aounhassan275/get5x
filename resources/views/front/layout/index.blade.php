@@ -94,9 +94,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-about-us">
-                        <h2>u<span>Stora</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
-                        
+                        <h2>get<span>5X</span></h2>                        
                     </div>
                 </div>
                 
@@ -145,7 +143,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>&copy; 2022.All Rights Reserved. <a href="{{url('/')}}" target="_blank">freshDesignweb.com</a></p>
+                        <p>&copy; 2022.All Rights Reserved. <a href="{{url('/')}}" target="_blank">get5x.com</a></p>
                     </div>
                 </div>
             </div>

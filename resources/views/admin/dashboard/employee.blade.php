@@ -24,7 +24,7 @@
 
                     <div class="media-body">
 
-                        <h3 class="mb-2">$ {{number_format(Auth::user()->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(Auth::user()->balance, 2)}}</h3>
 
                         <div class="mb-0">Available Balance</div>
 
@@ -55,7 +55,7 @@
                         @php  
                             $company_account= App\Models\CompanyAccount::find(1);
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$company_account->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR {{number_format(@$company_account->balance, 2)}}</h3>
 
                         <div class="mb-0">Company Account Balance</div>
 

@@ -7,8 +7,7 @@
     </div>
 </div>
 <div class="row">
-
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-3 col-sm-3 col-xl  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -27,7 +26,7 @@
                         @php  
                             $expense_income= App\Models\CompanyAccount::expense_income();
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$expense_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR{{number_format(@$expense_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Expense Income</div>
 
@@ -40,7 +39,39 @@
         </div>
 
     </div>
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-3 col-sm-3 col-xl  d-xxl-flex">
+
+        <div class="card flex-fill">
+
+            <div class="card-body py-4">
+
+                <div class="media">
+
+                    <div class="d-inline-block mt-2 mr-3">
+
+
+                        <i class="feather-lg text-info" data-feather="dollar-sign"></i>
+
+                    </div>
+
+                    <div class="media-body">
+                        @php  
+                            $product_income= App\Models\CompanyAccount::product_income();
+                        @endphp
+                        <h3 class="mb-2">PKR{{number_format(@$product_income->balance, 2)}}</h3>
+
+                        <div class="mb-0">Product Income</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-3 col-sm-3 col-xl  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -59,7 +90,7 @@
                         @php  
                             $flash_income= App\Models\CompanyAccount::flash_income();
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$flash_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR{{number_format(@$flash_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Flash Income</div>
 
@@ -72,7 +103,7 @@
         </div>
 
     </div>
-    <div class="col-4 col-sm-4 col-xl  d-xxl-flex">
+    <div class="col-3 col-sm-3 col-xl  d-xxl-flex">
 
         <div class="card flex-fill">
 
@@ -91,7 +122,7 @@
                         @php  
                             $reward_income= App\Models\CompanyAccount::reward_income();
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$reward_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR{{number_format(@$reward_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Reward Income</div>
 
@@ -127,7 +158,7 @@
                         @php  
                             $matching_income= App\Models\CompanyAccount::matching_income();
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$matching_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR{{number_format(@$matching_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Matching Income</div>
 
@@ -159,7 +190,7 @@
                         @php  
                             $loss_income= App\Models\CompanyAccount::loss_income();
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$loss_income->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR{{number_format(@$loss_income->balance, 2)}}</h3>
 
                         <div class="mb-0">Loss Income</div>
 
@@ -190,7 +221,7 @@
                         @php  
                             $salary= App\Models\CompanyAccount::salary();
                         @endphp
-                        <h3 class="mb-2">$ {{number_format(@$salary->balance, 2)}}</h3>
+                        <h3 class="mb-2">PKR{{number_format(@$salary->balance, 2)}}</h3>
 
                         <div class="mb-0">Salary Balance</div>
 
@@ -218,7 +249,7 @@
                     </div>
 
                     <div class="media-body">
-                        <h3 class="mb-2">$ {{App\Models\User::all()->sum('balance')}}</h3>
+                        <h3 class="mb-2">PKR{{App\Models\User::all()->sum('balance')}}</h3>
 
                         <div class="mb-0">User Balance</div>
 
@@ -350,7 +381,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <a href="{{route('admin.deposit.show')}}">
                         <div class="card flex-fill">
                             <div class="card-header">
@@ -372,51 +403,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-3">
-                    <a href="{{route('admin.deposit.PerfectMoney')}}">
-                        <div class="card flex-fill">
-                            <div class="card-header">
-                                <span class="badge badge-info float-right">{{App\Models\Deposit::PerfectMoney()->count()}}</span>
-                                <h5 class="card-title mb-0">By Perfect Money</h5>
-                            </div>
-                            <div class="card-body my-2">
-                                <div class="row d-flex align-items-center mb-4">
-                                    <div class="col-8">
-                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
-                                            <h3 class="mb-0">{{App\Models\Deposit::PerfectMoney()->sum('amount')}}</h3>
-                                        </h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-sm shadow-sm mb-1">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-3">
-                    <a href="{{route('admin.deposit.ownBalance')}}">
-                        <div class="card flex-fill">
-                            <div class="card-header">
-                                <span class="badge badge-info float-right">{{App\Models\Deposit::ownBalance()->count()}}</span>
-                                <h5 class="card-title mb-0">By Balance</h5>
-                            </div>
-                            <div class="card-body my-2">
-                                <div class="row d-flex align-items-center mb-4">
-                                    <div class="col-8">
-                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
-                                            <h3 class="mb-0">{{App\Models\Deposit::ownBalance()->sum('amount')}}</h3>
-                                        </h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-sm shadow-sm mb-1">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <a href="{{route('admin.deposit.index')}}">
                         <div class="card flex-fill">
                             <div class="card-header">
@@ -428,52 +415,6 @@
                                     <div class="col-8">
                                         <h2 class="d-flex align-items-center mb-0 font-weight-light">
                                             <h3 class="mb-0">{{App\Models\Deposit::new()->sum('amount')}}</h3>
-                                        </h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-sm shadow-sm mb-1">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <a href="{{route('admin.deposit.TodayPerfectMoney')}}">
-                        <div class="card flex-fill">
-                            <div class="card-header">
-                                <span class="badge badge-info float-right">{{App\Models\Deposit::TodayPerfectMoney()->count()}}</span>
-                                <h5 class="card-title mb-0">Today Deposit By Perfect Money</h5>
-                            </div>
-                            <div class="card-body my-2">
-                                <div class="row d-flex align-items-center mb-4">
-                                    <div class="col-8">
-                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
-                                            <h3 class="mb-0">{{App\Models\Deposit::TodayPerfectMoney()->sum('amount')}}</h3>
-                                        </h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-sm shadow-sm mb-1">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6">
-                    <a href="{{route('admin.deposit.TodayownBalance')}}">
-                        <div class="card flex-fill">
-                            <div class="card-header">
-                                <span class="badge badge-info float-right">{{App\Models\Deposit::TodayownBalance()->count()}}</span>
-                                <h5 class="card-title mb-0">Today Deposit By Balance</h5>
-                            </div>
-                            <div class="card-body my-2">
-                                <div class="row d-flex align-items-center mb-4">
-                                    <div class="col-8">
-                                        <h2 class="d-flex align-items-center mb-0 font-weight-light">
-                                            <h3 class="mb-0">{{App\Models\Deposit::TodayownBalance()->sum('amount')}}</h3>
                                         </h2>
                                     </div>
                                 </div>

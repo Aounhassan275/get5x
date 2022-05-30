@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="product-bit-title text-center">
-					<h2>DEPOSIT</h2>
+					<h2>DEPOSIT in {{$payment->method}}</h2>
 				</div>
 			</div>
 		</div>
@@ -60,7 +60,7 @@
                                     <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
                                         <label class="" for="shipping_first_name">Payment Method <abbr title="required" class="required">*</abbr>
                                         </label>
-                                        <input type="text" value="{{$payment->method}}" placeholder="" id="shipping_first_name" name="payment" class="input-text ">
+                                        <input type="text" value="{{$payment->method}}" readonly placeholder="" id="shipping_first_name" name="payment" class="input-text ">
                                     </p>
                                 </div>
                             </div>
