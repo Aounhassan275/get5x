@@ -69,18 +69,25 @@
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo2">
                     {{-- <i class="fa fa-truck"></i> --}}
                     <p>Package Subcription</p>
                     <p>{{Auth::user()->package->name}}</p>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo3">
                     {{-- <i class="fa fa-lock"></i> --}}
                     <p>Package Active On</p>
                     <p>{{Auth::user()->a_date->format('d M,Y')}}</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="single-promo promo4">
+                    {{-- <i class="fa fa-lock"></i> --}}
+                    <p>Remaining Product</p>
+                    <p>PKR {{Auth::user()->price}}</p>
                 </div>
             </div>
         </div>
