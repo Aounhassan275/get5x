@@ -39,30 +39,21 @@
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo1">
-                    <p>Available Balance</p>
+                    <p>E-Wallet</p>
                     <p>$ {{number_format(Auth::user()->balance, 2)}}</p>
                 </div>
             </div>
-            @if(Auth::user()->package)
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo2">
                     {{-- <i class="fa fa-truck"></i> --}}
-                    <p>Package Subcription</p>
-                    <p>{{Auth::user()->package->name}}</p>
+                    <p>Auto Wallet</p>
+                    <p>$ {{number_format(Auth::user()->auto_wallet, 2)}}</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-promo promo3">
-                    {{-- <i class="fa fa-lock"></i> --}}
-                    <p>Package Active On</p>
-                    <p>{{Auth::user()->a_date->format('d M,Y')}}</p>
-                </div>
-            </div>
-            @endif
             @if(Auth::user()->withdraws)
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo4">
                     {{-- <i class="fa fa-gift"></i> --}}
                     <p>Total Withdraw</p>
@@ -73,6 +64,29 @@
         </div>
     </div>
 </div> <!-- End promo area -->
+@if(Auth::user()->package)
+<div class="promo-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="single-promo promo2">
+                    {{-- <i class="fa fa-truck"></i> --}}
+                    <p>Package Subcription</p>
+                    <p>{{Auth::user()->package->name}}</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="single-promo promo3">
+                    {{-- <i class="fa fa-lock"></i> --}}
+                    <p>Package Active On</p>
+                    <p>{{Auth::user()->a_date->format('d M,Y')}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End promo area -->
+@endif
 <div class="promo-area">
     <div class="zigzag-bottom"></div>
     <div class="container">

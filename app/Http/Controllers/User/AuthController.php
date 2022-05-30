@@ -51,6 +51,11 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
+        if($request->password != $request->confirm_password)
+        {
+            toastr()->error('Password do not match');
+            return redirect()->back();
+        }
         if($request->code)
         { 
          
@@ -68,16 +73,12 @@ class AuthController extends Controller
                     toastr()->error('Username  already exists');
                     return redirect()->back();
                 }
-                if($user->main_owner == null)
+                if($user->main_owner)
                 {
-                    $request->merge([
-                        'main_owner' => $user->id
-                    ]);
+                    $main_owner = $user->main_owner;
                 }
                 else{
-                    $request->merge([
-                        'main_owner' => $user->main_owner
-                    ]);
+                    $main_owner = $user->id;
                 }
                 if($user->left == $request->code)
                 {
@@ -86,7 +87,8 @@ class AuthController extends Controller
                         'left' => uniqid(),
                         'right' => uniqid(),
                         'refer_by' => $user->id,
-                        'main_owner' => $request->main_owner,
+                        'main_owner' => $main_owner,
+                        'refer_type' => 'Left',
                         'balance' => 0,
                     ]+$request->all());
                 }else{
@@ -94,7 +96,8 @@ class AuthController extends Controller
                         'left' => uniqid(),
                         'right' => uniqid(),
                         'refer_by' => $user->id,
-                        'main_owner' => $request->main_owner,
+                        'refer_type' => 'Right',
+                        'main_owner' => $main_owner,
                         'balance' => 0,
                     ]+$request->all());
                 }

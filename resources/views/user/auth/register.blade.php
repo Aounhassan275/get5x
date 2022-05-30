@@ -68,6 +68,11 @@
                                             </label>
                                             <input type="password" value="" placeholder="" id="pwd" minlength="4" name="password" class="input-text ">
                                         </p>
+                                        <p id="billing_last_name_field" class="form-row form-row-last validate-required">
+                                            <label class="" for="billing_last_name">Confirm Password <abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            <input type="password" value="" placeholder="" id="pwd" minlength="4" name="confirm_password" class="input-text ">
+                                        </p>
                                         <div class="clear"></div>
 
                                     </div>

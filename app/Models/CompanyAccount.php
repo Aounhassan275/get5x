@@ -9,7 +9,7 @@ class CompanyAccount extends Model
     protected $fillable = [
        'name', 'balance'
     ];
-    public static function company_account(){
+    public static function matching_income(){
         return (new static)::where('name','Company Account')->first();
     }
     public static function expense_income(){

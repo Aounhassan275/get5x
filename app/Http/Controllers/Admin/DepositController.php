@@ -21,7 +21,10 @@ class DepositController extends Controller
         $deposit = Deposit::find($id);
         $user = $deposit->user; 
         $package = Package::find($deposit->package_id);
-        $company_account= CompanyAccount::company_account();
+        $flash_income= CompanyAccount::flash_income();
+        $flash_income->update([
+            'balance' => $flash_income->balance += $deposit->amount/100 * 80,
+        ]);
         $direct_income = $deposit->amount/100 * $package->direct_income;
         $matching_income = $deposit->amount/100 * $package->matching_income;
         if($user->refer_by && $user->checkStatus() == 'fresh')
@@ -34,15 +37,37 @@ class DepositController extends Controller
             else{
                 RefferralHelper::DirectRightRefferral($user,$refer_by,$direct_income,$matching_income);
             }    
-            $company_account->update([
-                'balance' => $company_account->balance -= $direct_income,
+            $flash_income->update([
+                'balance' => $flash_income->balance -= $direct_income,
             ]);
-            $direct_income = 0;
         }
         $user->update([
             'status' => 'active',
             'a_date' => Carbon::today(),
             'package_id' => $deposit->package_id
+        ]);
+        $flash_income->update([
+            'balance' => $flash_income->balance += $deposit->amount/100 * 1,
+        ]);
+        $expense_income= CompanyAccount::expense_income();
+        $expense_income->update([
+            'balance' => $expense_income->balance += $deposit->amount/100 * 6,
+        ]);
+        $reward_income= CompanyAccount::reward_income();
+        $reward_income->update([
+            'balance' => $reward_income->balance += $deposit->amount/100 * 1,
+        ]);
+        $loss_income= CompanyAccount::loss_income();
+        $loss_income->update([
+            'balance' => $loss_income->balance += $deposit->amount/100 * 1,
+        ]);
+        $salary= CompanyAccount::loss_income();
+        $salary->update([
+            'balance' => $salary->balance += $deposit->amount/100 * 1,
+        ]);
+        $matching_income= CompanyAccount::matching_income();
+        $matching_income->update([
+            'balance' => $matching_income->balance += $deposit->amount/100 * 10,
         ]);
         $deposit->update([
             'status' => 'old'

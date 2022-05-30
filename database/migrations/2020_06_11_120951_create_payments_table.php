@@ -20,6 +20,7 @@ class CreatePaymentsTable extends Migration
             $table->string('method');
             $table->string('bank')->nullable();
             $table->string('bnumber')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

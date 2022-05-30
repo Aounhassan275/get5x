@@ -21,8 +21,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name','email', 'password','status','left','right','left_refferal',
-        'right_refferal','left_amount','right_amount','balance',
-        'refer_by','package_id', 'a_date','image','top_referral','main_owner'
+        'right_refferal','left_amount','right_amount','balance','r_earning','refer_type',
+        'refer_by','package_id', 'a_date','image','top_referral','main_owner','auto_wallet'
     ];
 
     /**

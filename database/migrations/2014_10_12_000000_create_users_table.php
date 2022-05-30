@@ -25,7 +25,10 @@ class CreateUsersTable extends Migration
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->string('left')->nullable();
             $table->string('right')->nullable();
+            $table->string('refer_type')->nullable();
             $table->float('balance')->default(0);
+            $table->float('auto_wallet')->default(0);
+            $table->float('r_earning')->default(0);
             $table->date('a_date')->nullable();
             $table->unsignedSmallInteger('refer_by')->nullable();
             $table->unsignedSmallInteger('left_refferal')->nullable();

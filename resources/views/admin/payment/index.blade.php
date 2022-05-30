@@ -13,7 +13,7 @@
                 <h5 class="card-title">Add Payment Method</h5>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{route('admin.payment.store')}}" >
+                <form method="POST" action="{{route('admin.payment.store')}}" enctype="multipart/form-data">
                    @csrf
                    <div class="row">
                         <div class="form-group col-6">
