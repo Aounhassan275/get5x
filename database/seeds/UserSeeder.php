@@ -50,6 +50,7 @@ class UserSeeder extends Seeder
             ['name' => 'PerfectMoney'],
         ]);
         DB::table('company_accounts')->insert([
+            ['name' => 'Matching Income'],
             ['name' => 'Expense Income'],
             ['name' => 'Flash Income'],
             ['name' => 'Reward Income'],

@@ -10,7 +10,7 @@ class CompanyAccount extends Model
        'name', 'balance'
     ];
     public static function matching_income(){
-        return (new static)::where('name','Company Account')->first();
+        return (new static)::where('name','Matching Income')->first();
     }
     public static function expense_income(){
         return (new static)::where('name','Expense Income')->first();
