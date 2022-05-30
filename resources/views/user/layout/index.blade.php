@@ -92,6 +92,7 @@
 								<li><a href="{{route('user.package.index')}}" class="{{Request::is('user/package')?'active':''}}">Package</a></li>
 							@elseif(Auth::user()->status=='onHold')
 								<li><a href="{{route('user.dashboard.index')}}" class="{{Request::is('user/dashboard')?'active':''}}">Dashboard</a></li>
+								<li><a href="#" >Package Pending Wait Please</a></li>
 							@endif
 						@endif
 					</ul>
