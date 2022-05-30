@@ -23,7 +23,7 @@ class DepositController extends Controller
         $package = Package::find($deposit->package_id);
         $flash_income= CompanyAccount::flash_income();
         $flash_income->update([
-            'balance' => $flash_income->balance += $deposit->amount/100 * 50,
+            'balance' => $flash_income->balance += $deposit->amount/100 * 40,
         ]);
         $product_income= CompanyAccount::product_income();
         $product_income->update([
@@ -69,7 +69,7 @@ class DepositController extends Controller
         $loss_income->update([
             'balance' => $loss_income->balance += $deposit->amount/100 * 1,
         ]);
-        $salary= CompanyAccount::loss_income();
+        $salary= CompanyAccount::salary();
         $salary->update([
             'balance' => $salary->balance += $deposit->amount/100 * 1,
         ]);
