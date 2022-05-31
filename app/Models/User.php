@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','email', 'password','status','left','right','left_refferal',
+        'name','email', 'password','status','left','right','left_refferal','phone',
         'right_refferal','left_amount','right_amount','balance','r_earning','refer_type',
         'refer_by','package_id', 'a_date','image','top_referral','main_owner','auto_wallet'
     ];
@@ -215,18 +215,20 @@ class User extends Authenticatable
     {
         $all_right = [];
         $right = User::find($this->right_refferal);
-        $all_right[] = $right;
-        for($i = 0; $i < 100; $i++)
+        if($right)
         {
-            if($right->right_refferal == null)
+            $all_right[] = $right;
+            for($i = 0; $i < 100; $i++)
             {
-                $i = 100;
-            }else{
-                $right = User::find($right->right_refferal);
-                $all_right[] = $right;
-            }
-            
+                if($right->right_refferal == null)
+                {
+                    $i = 100;
+                }else{
+                    $right = User::find($right->right_refferal);
+                    $all_right[] = $right;
+                }    
             } 
+        }
         return $all_right;
     }
     

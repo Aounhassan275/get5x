@@ -134,12 +134,8 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     /*******************Balance Transfer ROUTES*************/
     Route::get('balance_transfer', 'TranscationController@balance_transfer')->name('balance_transfer.index');
      /*******************Referral ROUTES*************/
-    // Route::get('referral', 'ReferralController@index')->name('referral.index');
-    Route::get('left_refferal_tree/{id}', 'ReferralController@showLeftLeg')->name('left_refferal_tree.index');
-    Route::get('right_refferal_tree/{id}', 'ReferralController@showRightLeg')->name('right_refferal_tree.index');
-    Route::get('referral_tree/{id}','ReferralController@showTree')->name('referral_tree.index');
-    Route::get('left_refferal/{id}','ReferralController@leftReferral')->name('left_refferal.index');
-    Route::get('right_refferal/{id}','ReferralController@RightReferral')->name('right_refferal.index');
+    Route::view('left_refferal', 'user.refer.left_refferal'); 
+    Route::view('right_refferal', 'user.refer.right_refferal'); 
     Route::view('direct_earning', 'user.earning.direct'); 
     Route::view('matching_earning', 'user.earning.matching'); 
     
@@ -161,6 +157,7 @@ Route::get('brands', 'FrontendController@showBrands')->name('brand.index');
 Route::get('brand/{name}', 'FrontendController@showBrandDetails')->name('brand.show');
 Route::get('products', 'FrontendController@showProducts')->name('product.index');
 Route::get('product/{name}', 'FrontendController@showProductDetails')->name('product.show');
+Route::get('autoship_cronjob', 'FrontendController@autoship_cronjob');
 Route::view('contact_us', 'front.contact.index'); 
 Route::view('packages', 'front.package.index'); 
 Route::view('about_us', 'front.about.index'); 

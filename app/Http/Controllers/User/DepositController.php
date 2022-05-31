@@ -57,11 +57,6 @@ class DepositController extends Controller
    
         $user= User::find(Auth::user()->refer_by);
         $package= Package::find($request->package_id);
-
-        // if($user) {
-        //     $user-> balance+=$package->r_earning;
-        //     $user->save();
-        // }
             $validator = Validator::make($request->all(),[
                 't_id' => 'required|unique:deposits'
             ]);

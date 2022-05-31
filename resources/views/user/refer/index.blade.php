@@ -47,6 +47,29 @@
         </div>
     </div>
 </div>
+<div class="promo-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <a href="{{url('user/left_refferal')}}">
+                    <div class="single-promo promo3" style="color:white;">
+                        <p>Left Refferral</p>
+                        <p>{{count(Auth::user()->getOrginalLeft())}}</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a href="{{url('user/right_refferal')}}">
+                    <div class="single-promo promo4" style="color:white;">
+                        <p>Right Refferral</p>
+                        <p>{{count(Auth::user()->getOrginalRight())}}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div> <!-- End promo area -->
 <div class="single-product-area">
     <div class="zigzag-bottom"></div>
     <div class="container">

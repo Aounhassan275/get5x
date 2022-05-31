@@ -66,6 +66,18 @@
                             </div>
 
                         </div>
+                        <div class="col-2">
+                            <div class="woocommerce-shipping-fields">
+                                <div class="shipping_address" style="display: block;">
+                                    <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
+                                        <label class="" for="shipping_first_name">Transcation Screenshot <abbr title="required" class="required">*</abbr>
+                                        </label>
+                                        <input type="file" id="shipping_first_name" required name="image" class="input-text ">
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
 
                     </div>
 

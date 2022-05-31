@@ -20,6 +20,7 @@
                     <th style="width:auto;">User Package</th>
                     <th style="width:auto;">Deposit Amount</th>
                     <th style="width:auto;">Transction Id</th>
+                    <th style="width:auto;">Screenshot</th>
                     <th style="width:auto;">Method</th>
                     <th style="width:auto;">Date</th>
                     <th style="width:auto;">Action</th>
@@ -34,6 +35,11 @@
                 <td>{{$deposit->package->name}}</td>
                 <td>{{$deposit->amount}}</td>
                 <td>{{$deposit->t_id}}</td>
+                <td class="text-center">
+                    <a href="{{asset(@$deposit->image)}}" data-target="_blank">
+                        <i class="feather-sm text-info" data-feather="eye"></i>
+                    </a>
+                </td>
                 <td>{{$deposit->payment}}</td>
                 <td>{{Carbon\Carbon::parse($deposit->updated_at)->format('d M,Y')}}</td>
                 <td><a href="{{route('admin.deposit.delete',$deposit->id)}}"><button class="btn btn-danger">Delete</button></a></td>

@@ -62,6 +62,11 @@
                                             </label>
                                             <input type="text" value="" placeholder="" id="billing_first_name" name="email" class="input-text ">
                                         </p>
+                                        <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                            <label class="" for="billing_first_name">Mobile Phone <abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            <input type="text"  placeholder="" id="billing_first_name" name="phone" class="input-text ">
+                                        </p>
 
                                         <p id="billing_last_name_field" class="form-row form-row-last validate-required">
                                             <label class="" for="billing_last_name">Password <abbr title="required" class="required">*</abbr>

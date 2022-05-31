@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->nullable();
+            $table->string('phone')->nullable();
             $table->string('status')->default('pending');
             $table->unsignedBigInteger('package_id')->nullable();
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');

@@ -59,7 +59,7 @@
                                             <input type="password" value="" placeholder="" id="billing_last_name" name="password" class="input-text ">
                                         </p>
                                         <div class="clear"></div>
-
+                                        <a href="#">Forget Password ?</a>
                                     </div>
                                 </div>
                             </div>

@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use App\Helpers\ImageHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Deposit extends Model
 {
     protected $fillable = [
-        't_id','payment','user_id','package_id','amount','status'
+        't_id','payment','user_id','package_id','amount','status','image'
     ];
+    public function setImageAttribute($value){
+        $this->attributes['image'] = ImageHelper::savePImage($value,'/deposit/');
+    }
     public function package()
     {
         return $this->belongsTo('App\Models\Package');
