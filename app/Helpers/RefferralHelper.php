@@ -39,7 +39,7 @@ class RefferralHelper
                 RefferralHelper::MatchingEarningForLeft($refer_by,$user,$matching_income);
             }
         }else{
-            $left = $refer_by->getOrginalLeft()->last();
+            $left = last($refer_by->getOrginalLeft());
             $left->update([
                 'left_refferal' => $user->id,
                 'balance' => $left->balance += $e_wallet_direct,
@@ -96,7 +96,7 @@ class RefferralHelper
             }   
         }
         else{
-            $right = $refer_by->getOrginalRight()->last();
+            $right = last($refer_by->getOrginalRight());
             $right->update([
                 'right_refferal' => $user->id,
                 'balance' => $refer_by->balance += $direct_income/100 * 80,
