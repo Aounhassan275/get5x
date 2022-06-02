@@ -104,9 +104,6 @@ class RefferralHelper
                 'r_earning' => $refer_by->r_earning += $direct_income,
                 'right_amount' => $matching_income,
             ]);
-            $user->update([
-                'top_referral' => 'Done',
-            ]);
             Earning::create([
                 "user_id" => $refer_by->id,
                 "price" => $direct_income,

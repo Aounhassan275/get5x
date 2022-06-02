@@ -258,7 +258,7 @@ class User extends Authenticatable
         if($right)
         {
             $all_right[] = $right;
-            for($i = 0; $i < 1000; $i++)
+            for($i = 0; $i < 100; $i++)
             {
                 if($right->right_refferal == null)
                 {
