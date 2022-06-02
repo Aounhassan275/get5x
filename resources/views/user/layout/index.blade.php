@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="{{url('/')}}"><img src="{{asset('front/img/logo.png')}}"></a></h1>
+                        <h1><a href="{{url('/')}}"><img style="width:150px;" src="{{asset('logo.jpeg')}}"></a></h1>
                     </div>
                 </div>
             </div>

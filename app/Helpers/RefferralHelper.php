@@ -202,10 +202,13 @@ class RefferralHelper
                 }
             }
             $chain = $refferral;
-            if($chain->main_owner == $user->main_owner)
+            if($chain)
             {
-                $i = 1000;
-               RefferralHelper::ownerMatching($chain);
+                if($chain->id == $user->main_owner)
+                {
+                    $i = 1000;
+                    RefferralHelper::ownerMatching($chain);
+                }
             }
         }
     }
@@ -285,10 +288,13 @@ class RefferralHelper
                     }
                 }
                 $chain = $refferral;
-                if($refferral->id == $user->main_owner)
+                if($chain)
                 {
-                    RefferralHelper::ownerMatching($chain);
-                    $i = 1000;
+                    if($chain->id == $user->main_owner)
+                    {
+                        $i = 1000;
+                        RefferralHelper::ownerMatching($chain);
+                    }
                 }
             }
     }
