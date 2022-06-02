@@ -86,6 +86,9 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
         Route::post('product/get_category_brand', 'ProductController@getCategoryBrand')->name('product.brands');     
         Route::resource('product', 'ProductController');
         Route::resource('product_image', 'ProductImageController');
+        /******************ORDER ROUTES****************/
+        Route::get('order/deliver/{id}', 'OrderController@orderDelivers')->name('order.deliver');  
+        Route::resource('order', 'OrderController');  
 });
 });
 /******************USER PANELS ROUTES****************/
@@ -141,6 +144,9 @@ Route::group(['prefix' => 'user', 'as'=>'user.','namespace' => 'User'], function
     
     Route::get('products', 'ProductController@showProducts')->name('product.index');
     Route::get('product/{name}', 'ProductController@showProductDetails')->name('product.show');
+    Route::get('product/order/{id}', 'ProductController@orderProducts')->name('product.order');
+    /******************ORDER ROUTES****************/
+    Route::resource('order', 'OrderController');  
 
 
 

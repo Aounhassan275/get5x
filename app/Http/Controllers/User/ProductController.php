@@ -19,4 +19,9 @@ class ProductController extends Controller
         $product = Product::where('name',str_replace('_', ' ',$name))->first();
         return view('user.product.show',compact('product'));
     }
+    public function orderProducts($id)
+    {
+        $product = Product::find($id);
+        return view('user.product.create_order',compact('product'));
+    }
 }

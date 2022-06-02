@@ -129,7 +129,7 @@
 							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Add Employee</span>
 						</a>
 					</li>
-					<li class="sidebar-item {{Request::is('admin/brand/*') || Request::is('admin/category') || Request::is('admin/product')  ?'active':''}}">
+					<li class="sidebar-item {{Request::is('admin/brand/*') || Request::is('admin/category') || Request::is('admin/product')  || Request::is('admin/order')  ?'active':''}}">
 						<a href="{{url('#social')}}" data-toggle="collapse" class="sidebar-link collapsed">
 							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Social Section</span>
 						</a>
@@ -138,6 +138,7 @@
 							<li class="sidebar-item {{Request::is('admin/brand')?'active':''}}"><a class="sidebar-link" href="{{route('admin.brand.index')}}">Manage Brand</a></li>
 							<li class="sidebar-item {{Request::is('admin/product')?'active':''}}"><a class="sidebar-link" href="{{route('admin.product.index')}}">Manage Product</a></li>
 							<li class="sidebar-item {{Request::is('admin/product/create')?'active':''}}"><a class="sidebar-link" href="{{route('admin.product.create')}}">Create Products</a></li>
+							<li class="sidebar-item {{Request::is('admin/order')?'active':''}}"><a class="sidebar-link" href="{{route('admin.order.index')}}">Orders</a></li>
 						</ul>
 					</li>	
 					@endif

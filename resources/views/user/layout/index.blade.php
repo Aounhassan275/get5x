@@ -42,7 +42,10 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
+                            @if(Auth::user()->checkstatus() =='old')
                             <li><a href="{{route('user.product.index')}}"><i class="fa fa-user"></i> Products</a></li>
+                            <li><a href="{{route('user.order.index')}}"><i class="fa fa-user"></i> Orders</a></li>
+                            @endif
                             <li><a href="{{route('user.logout')}}"><i class="fa fa-user"></i> Logout</a></li>
                         </ul>
                     </div>

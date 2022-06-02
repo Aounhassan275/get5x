@@ -27,7 +27,7 @@
 				<div class="product-content-right">
 					<div class="product-breadcroumb">
 						<a href="{{url('/')}}">Home</a>
-						<a href="{{route('product.index')}}">Products</a>
+						<a href="{{route('user.product.index')}}">Products</a>
 						<a href="#">{{@$product->name}}</a>
 					</div>
 					
@@ -56,6 +56,7 @@
 									<p>Category: <a href="{{route('category.show',str_replace(' ', '_',$product->category->name))}}">{{@$product->category->name}}</a>.</p>
 									<p>Brand: <a href="{{route('brand.show',str_replace(' ', '_',$product->brand->name))}}">{{@$product->brand->name}}</a>.</p>
 									<p>Phone: <a href="tel:{{@$product->phone}}">{{@$product->phone}}</a>.</p>
+									<a href="{{route('user.product.order',$product->id)}}" class="btn btn-primary">Order Products</a>
 								</div> 
 								
 								<div role="tabpanel">

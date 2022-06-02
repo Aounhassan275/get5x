@@ -29,13 +29,13 @@
 					<div class="product-upper">
 						<img src="{{asset(@$product->images->first()->image)}}" alt="">
 					</div>
-					<h2><a href="{{route('product.show',str_replace(' ', '_',$product->name))}}">{{@$product->name}}</a></h2>
+					<h2><a href="{{route('user.product.show',str_replace(' ', '_',$product->name))}}">{{@$product->name}}</a></h2>
 					<div class="product-carousel-price">
 						<ins>PKR {{@$product->price}}</ins>
 					</div>  
 					
 					<div class="product-option-shop">
-						<a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{route('product.show',str_replace(' ', '_',$product->name))}}">View Product</a>
+						<a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{route('user.product.show',str_replace(' ', '_',$product->name))}}">View Product</a>
 					</div>                       
 				</div>
 			</div>

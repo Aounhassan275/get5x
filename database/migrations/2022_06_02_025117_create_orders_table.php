@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('price')->nullable();
+            $table->string('delivery_cost')->nullable();
             $table->string('address')->nullable();
             $table->string('status')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();

@@ -320,4 +320,26 @@ class User extends Authenticatable
             ]);
         }
     }
+    public function orderStatus($price)
+    {
+        $product_cost = $price + 150;
+        $order_price = Order::sum('price');
+        $delivery_price = Order::sum('delivery_cost');
+        $order_amount = $order_price + $delivery_price;
+        $amount = $this->package->price - $order_amount;
+        if($amount > $product_cost)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function remainingProductPrice()
+    {
+        $order_price = Order::sum('price');
+        $delivery_price = Order::sum('delivery_cost');
+        $order_amount = $order_price + $delivery_price;
+        $amount = $this->package->price - $order_amount;
+        return $amount;
+    }
 }

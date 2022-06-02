@@ -86,8 +86,8 @@
             <div class="col-md-4 col-sm-6">
                 <div class="single-promo promo4">
                     {{-- <i class="fa fa-lock"></i> --}}
-                    <p>Remaining Product</p>
-                    <p>PKR {{Auth::user()->package->price}}</p>
+                    <p>Remaining Product Amount</p>
+                    <p>PKR {{Auth::user()->remainingProductPrice()}}</p>
                 </div>
             </div>
         </div>
