@@ -87,7 +87,7 @@
                 <div class="single-promo promo4">
                     {{-- <i class="fa fa-lock"></i> --}}
                     <p>Remaining Product</p>
-                    <p>PKR {{Auth::user()->price}}</p>
+                    <p>PKR {{Auth::user()->package->price}}</p>
                 </div>
             </div>
         </div>

@@ -42,22 +42,21 @@ class RefferralHelper
             $left = last($refer_by->getOrginalLeft());
             $left->update([
                 'left_refferal' => $user->id,
-                'balance' => $left->balance += $e_wallet_direct,
-                'auto_wallet' => $left->auto_wallet += $auto_direct,
-                'r_earning' => $left->r_earning += $direct_income,
+            ]);
+            $refer_by->update([
+                'balance' => $refer_by->balance += $e_wallet_direct,
+                'auto_wallet' => $refer_by->auto_wallet += $auto_direct,
+                'r_earning' => $refer_by->r_earning += $direct_income,
                 'left_amount' => $matching_income,
             ]);
             $user->update([
                 'top_referral' => 'Done',
             ]);
             Earning::create([
-                "user_id" => $left->id,
+                "user_id" => $refer_by->id,
                 "price" => $direct_income,
                 "type" => 'direct_income'
             ]);
-            // $company_account->update([
-            //     'balance' => $company_account->balance -= $direct_income,
-            // ]);
             if($user->main_owner == $left->id)
             {
                 RefferralHelper::ownerMatching($left);
@@ -99,6 +98,9 @@ class RefferralHelper
             $right = last($refer_by->getOrginalRight());
             $right->update([
                 'right_refferal' => $user->id,
+            ]);
+            
+            $refer_by->update([
                 'balance' => $refer_by->balance += $direct_income/100 * 80,
                 'auto_wallet' => $refer_by->auto_wallet += $direct_income/100 * 20,
                 'r_earning' => $refer_by->r_earning += $direct_income,
@@ -108,13 +110,13 @@ class RefferralHelper
                 'top_referral' => 'Done',
             ]);
             Earning::create([
-                "user_id" => $right->id,
+                "user_id" => $refer_by->id,
                 "price" => $direct_income,
                 "type" => 'direct_income'
             ]);
-            // $company_account->update([
-            //     'balance' => $company_account->balance -= $direct_income,
-            // ]);
+            $user->update([
+                'top_referral' => 'Done',
+            ]);
             if($user->main_owner == $right->id)
             {
                 RefferralHelper::ownerMatching($right);

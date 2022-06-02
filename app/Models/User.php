@@ -262,5 +262,8 @@ class User extends Authenticatable
         }
         return $price;
     }
- 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
