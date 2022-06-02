@@ -32,7 +32,12 @@ class RefferralHelper
             $all_lefts = $user->getOrginalUpperLeft();
             foreach($all_lefts as $key =>  $upper_left)
             {
-                $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
+                if($key == 0)
+                {
+                    $upper_left->matchingEarning($user->id,$matching_income);
+                }else{
+                    $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
+                }
                 RefferralHelper::ownerMatching($upper_left);
             }
         }else{
@@ -57,8 +62,12 @@ class RefferralHelper
             $all_lefts = $user->getOrginalUpperLeft();
             foreach($all_lefts as $key =>  $upper_left)
             {
-                $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
-                RefferralHelper::ownerMatching($upper_left);
+                if($key == 0)
+                {
+                    $upper_left->matchingEarning($user->id,$matching_income);
+                }else{
+                    $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
+                }
             }
         }
     } 
@@ -84,7 +93,12 @@ class RefferralHelper
             $all_rights = $user->getOrginalUpperRight();
             foreach($all_rights as $key =>  $upper_right)
             {
-                $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+                if($key == 0)
+                {
+                    $upper_right->matchingEarning($user->id,$matching_income);
+                }else{                    
+                    $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+                }
                 RefferralHelper::ownerMatching($upper_right);
             }
         }
@@ -111,7 +125,12 @@ class RefferralHelper
             $all_rights = $user->getOrginalUpperRight();
             foreach($all_rights as $key =>  $upper_right)
             {
-                $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+                if($key == 0)
+                {
+                    $upper_right->matchingEarning($user->id,$matching_income);
+                }else{                    
+                    $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+                }
                 RefferralHelper::ownerMatching($upper_right);
             }
         }
