@@ -204,12 +204,52 @@ class User extends Authenticatable
                     $i = 100;
                 }else{
                     $left = User::find($left->left_refferal);
+                    $all_left[] = $left;
                 }
                 
             } 
         }
         
         return $all_left;
+    }
+    public function getOrginalUpperLeft()
+    {
+        $all_left = [];
+        $left = User::where('left_refferal',$this->id)->first();
+        if($left)
+        {
+            $all_left[] = $left;
+            for($i = 0; $i < 100; $i++)
+            {
+                if($left->main_owner == null)
+                {
+                    $i = 100;
+                }else{
+                    $left = User::where('left_refferal',$left->id)->first();
+                }
+            } 
+        }
+        return $all_left;
+    }
+    public function getOrginalUpperRight()
+    {
+        $all_right = [];
+        $right = User::where('right_refferal',$this->right_refferal)->first();
+        if($right)
+        {
+            $all_right[] = $right;
+            for($i = 0; $i < 100; $i++)
+            {
+                if($right->main_owner == null)
+                {
+                    $i = 100;
+                }else{
+                    $right = User::where('right_refferal',$right->right_refferal)->first();
+                    $all_right[] = $right;
+                }
+            } 
+        }
+        return $all_right;
     }
     public function getOrginalRight()
     {
@@ -218,7 +258,7 @@ class User extends Authenticatable
         if($right)
         {
             $all_right[] = $right;
-            for($i = 0; $i < 100; $i++)
+            for($i = 0; $i < 1000; $i++)
             {
                 if($right->right_refferal == null)
                 {
