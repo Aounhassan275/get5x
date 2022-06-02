@@ -215,7 +215,7 @@ class User extends Authenticatable
     public function getOrginalUpperLeft()
     {
         $all_left = [];
-        $left = User::where('left_refferal',$this->id)->first();
+        $left = User::where('left_refferal',$this->id)->orWhere('right_refferal',$this->id)->first();
         if($left)
         {
             $all_left[] = $left;
@@ -225,7 +225,8 @@ class User extends Authenticatable
                 {
                     $i = 100;
                 }else{
-                    $left = User::where('left_refferal',$left->id)->first();
+                    $left = User::where('left_refferal',$left->id)->orWhere('right_refferal',$left->id)->first();
+                    $all_left[] = $left;
                 }
             } 
         }
@@ -234,7 +235,7 @@ class User extends Authenticatable
     public function getOrginalUpperRight()
     {
         $all_right = [];
-        $right = User::where('right_refferal',$this->right_refferal)->first();
+        $right = User::where('right_refferal',$this->id)->orWhere('left_refferal',$this->id)->first();
         if($right)
         {
             $all_right[] = $right;
@@ -244,7 +245,7 @@ class User extends Authenticatable
                 {
                     $i = 100;
                 }else{
-                    $right = User::where('right_refferal',$right->right_refferal)->first();
+                    $right = User::where('right_refferal',$right->id)->orWhere('left_refferal',$right->id)->first();
                     $all_right[] = $right;
                 }
             } 

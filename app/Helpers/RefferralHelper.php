@@ -29,12 +29,12 @@ class RefferralHelper
                 "price" => $direct_income,
                 "type" => 'direct_income'
             ]);
-            // if($user->main_owner == $refer_by->id)
-            // {
-            //     RefferralHelper::ownerMatching($refer_by);
-            // }else{
-            //     RefferralHelper::MatchingEarningForLeft($refer_by,$user,$matching_income);
-            // }
+            $all_lefts = $user->getOrginalUpperLeft();
+            foreach($all_lefts as $key =>  $upper_left)
+            {
+                $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
+                RefferralHelper::ownerMatching($upper_left);
+            }
         }else{
             $left = last($refer_by->getOrginalLeft());
             $left->update([
@@ -54,12 +54,12 @@ class RefferralHelper
                 "price" => $direct_income,
                 "type" => 'direct_income'
             ]);
-            // if($user->main_owner == $left->id)
-            // {
-            //     RefferralHelper::ownerMatching($left);
-            // }else{
-            //     RefferralHelper::MatchingEarningForLeft($left,$user,$matching_income);
-            // }
+            $all_lefts = $user->getOrginalUpperLeft();
+            foreach($all_lefts as $key =>  $upper_left)
+            {
+                $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
+                RefferralHelper::ownerMatching($upper_left);
+            }
         }
     } 
     public static function DirectRightRefferral($user,$refer_by,$direct_income,$matching_income)
@@ -81,16 +81,12 @@ class RefferralHelper
                 "price" => $direct_income,
                 "type" => 'direct_income'
             ]);
-            // $company_account->update([
-            //     'balance' => $company_account->balance -= $direct_income,
-            // ]);
-            // if($user->main_owner == $refer_by->id)
-            // {
-            //     RefferralHelper::ownerMatching($refer_by);
-            // }else{
-                
-            //     RefferralHelper::MatchingEarningForRight($refer_by,$user,$matching_income);
-            // }   
+            $all_rights = $user->getOrginalUpperRight();
+            foreach($all_rights as $key =>  $upper_right)
+            {
+                $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+                RefferralHelper::ownerMatching($upper_right);
+            }
         }
         else{
             $right = last($refer_by->getOrginalRight());
@@ -112,12 +108,12 @@ class RefferralHelper
             $user->update([
                 'top_referral' => 'Done',
             ]);
-            // if($user->main_owner == $right->id)
-            // {
-            //     RefferralHelper::ownerMatching($right);
-            // }else{
-            //     RefferralHelper::MatchingEarningForRight($right,$user,$matching_income);
-            // }
+            $all_rights = $user->getOrginalUpperRight();
+            foreach($all_rights as $key =>  $upper_right)
+            {
+                $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+                RefferralHelper::ownerMatching($upper_right);
+            }
         }
     }
     public static function MatchingEarningForLeft($chain,$user,$matching_income)
