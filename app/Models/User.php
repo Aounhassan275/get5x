@@ -266,4 +266,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+    public function matchingEarning($id,$matching_income)
+    {
+        if($this->left_refferal == $id)
+        {
+            $this->update([
+                'left_amount' =>   $this->left_amount + $matching_income,
+            ]);
+        }else{
+            $this->update([
+                'right_amount' =>   $this->right_amount + $matching_income,
+            ]);
+        }
+    }
 }

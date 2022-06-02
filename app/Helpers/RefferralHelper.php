@@ -129,17 +129,12 @@ class RefferralHelper
     {
         for($i = 0;$i < 1000;$i++)
         {
-            $referrral_chain = User::where('left_refferal',$chain->id)->first();
-            if($referrral_chain->left_refferal == $chain->id)
+            $refferral = User::where('left_refferal',$chain->id)->first();
+            if($refferral)
             {
-                $referrral_chain->update([
-                    'left_amount' =>   $referrral_chain->left_amount + $matching_income,
-                ]);
-            }else{
-                $referrral_chain->update([
-                    'right_amount' =>   $referrral_chain->right_amount + $matching_income,
-                ]);
+                $refferral->matchingEarning($chain->id,$matching_income);
             }
+            
             if($chain->left_amount > $chain->right_amount)
             {
                 $amount = $chain->right_amount*2;
@@ -206,8 +201,8 @@ class RefferralHelper
                     ]);
                 }
             }
-            $chain = $referrral_chain;
-            if($referrral_chain->id == $user->main_owner)
+            $chain = $refferral;
+            if($chain->main_owner == $user->main_owner)
             {
                 $i = 1000;
                RefferralHelper::ownerMatching($chain);
@@ -218,16 +213,10 @@ class RefferralHelper
     {
         for($i = 0;$i < 1000;$i++)
             {
-                $referrral_chain = User::where('right_refferal',$chain->id)->first();
-                if($referrral_chain->left_refferal == $chain->id)
+                $refferral = User::where('right_refferal',$chain->id)->first();
+                if($refferral)
                 {
-                    $referrral_chain->update([
-                        'left_amount' =>   $referrral_chain->left_amount + $matching_income,
-                    ]);
-                }else{
-                    $referrral_chain->update([
-                        'right_amount' =>   $referrral_chain->right_amount + $matching_income,
-                    ]);
+                    $refferral->matchingEarning($chain->id,$matching_income);
                 }
                 if($chain->left_amount > $chain->right_amount)
                 {
@@ -295,8 +284,8 @@ class RefferralHelper
                         ]);
                     }
                 }
-                $chain = $referrral_chain;
-                if($referrral_chain->id == $user->main_owner)
+                $chain = $refferral;
+                if($refferral->id == $user->main_owner)
                 {
                     RefferralHelper::ownerMatching($chain);
                     $i = 1000;
