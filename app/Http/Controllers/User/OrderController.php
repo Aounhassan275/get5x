@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -37,6 +38,9 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         Order::create($request->all());
+        Auth::user()->update([
+            'cash_wallet' => Auth::user()->cash_wallet -= 150
+        ]);
         return redirect(route('user.order.index'));
     }
 

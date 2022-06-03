@@ -85,12 +85,30 @@ class FrontendController extends Controller
             }
             if($user->refer_type == 'Left')
             {
-                $refer_by = User::find($user->refer_by);
-                RefferralHelper::MatchingEarningForLeft($refer_by,$user,$matching_income);
+                $all_lefts = $user->getOrginalUpperLeft();
+                foreach($all_lefts as $key =>  $upper_left)
+                {
+                    if($key == 0)
+                    {
+                        $upper_left->matchingEarning($user->id,$matching_income);
+                    }else{
+                        $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
+                    }
+                    RefferralHelper::ownerMatching($upper_left);
+                }
             }elseif($user->refer_type == 'Right')
             {
-                $refer_by = User::find($user->refer_by);
-                RefferralHelper::MatchingEarningForRight($refer_by,$user,$matching_income);
+                $all_rights = $user->getOrginalUpperRight();
+                foreach($all_rights as $key =>  $upper_right)
+                {
+                    if($key == 0)
+                    {
+                        $upper_right->matchingEarning($user->id,$matching_income);
+                    }else{                    
+                        $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+                    }
+                    RefferralHelper::ownerMatching($upper_right);
+                }
             }else{
                 RefferralHelper::ownerMatching($user);
             }

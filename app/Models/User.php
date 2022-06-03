@@ -322,12 +322,10 @@ class User extends Authenticatable
     }
     public function orderStatus($price)
     {
-        $product_cost = $price + 150;
+        $product_cost = $price;
         $order_price = Order::sum('price');
-        $delivery_price = Order::sum('delivery_cost');
-        $order_amount = $order_price + $delivery_price;
-        $amount = $this->package->price - $order_amount;
-        if($amount > $product_cost)
+        $amount = $this->package->price - $order_price;
+        if($amount > $product_cost && $this->cash_wallet > 150)
         {
             return true;
         }else{
@@ -337,9 +335,7 @@ class User extends Authenticatable
     public function remainingProductPrice()
     {
         $order_price = Order::sum('price');
-        $delivery_price = Order::sum('delivery_cost');
-        $order_amount = $order_price + $delivery_price;
-        $amount = $this->package->price - $order_amount;
+        $amount = $this->package->price - $order_price;
         return $amount;
     }
 }

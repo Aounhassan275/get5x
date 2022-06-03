@@ -45,7 +45,7 @@ class WithdrawController extends Controller
               toastr()->error('Not enough balance');
               return redirect()->back();
           }
-        $limit = $user->package->price/$user->package->package_validity * Carbon::today()->diffInDays($user->a_date);
+        $limit = $user->package->withdraw_limit;
         
         $total_withdraw = Withdraw::where('user_id',$user->id)->where('status','Completed')->whereBetween('created_at',[$user->a_date,Carbon::tomorrow()])->sum('payment');
         $pending_withdraw = Withdraw::where('user_id',$user->id)->where('status','in process')->whereBetween('created_at',[$user->a_date,Carbon::tomorrow()])->sum('payment');
@@ -60,7 +60,7 @@ class WithdrawController extends Controller
           ]+$request->all());
           
           $user->update([
-              'balance' => $user->balance -= $request->payment,    
+              'cash_wallet' => $user->cash_wallet -= $request->payment,    
           ]);
           toastr()->success('Withdraw Request is Submit Successfully');
           return redirect()->back();

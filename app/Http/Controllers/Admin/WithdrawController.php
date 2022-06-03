@@ -42,9 +42,9 @@ class WithdrawController extends Controller
         $withdraw->update([
             'status' => 'Completed',
         ]);     
-        $company_account= CompanyAccount::find(1);
-        $company_account->update([
-          'balance' => $company_account->balance -= $withdraw->payment,
+        $flash_income= CompanyAccount::flash_income();
+        $flash_income->update([
+          'balance' => $flash_income->balance -= $withdraw->payment,
         ]);
         toastr()->success('Withdraw is Completed Now');
 
