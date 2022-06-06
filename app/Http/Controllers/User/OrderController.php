@@ -39,7 +39,7 @@ class OrderController extends Controller
     {
         Order::create($request->all());
         Auth::user()->update([
-            'cash_wallet' => Auth::user()->cash_wallet -= 150
+            'balance' => Auth::user()->balance -= 150
         ]);
         return redirect(route('user.order.index'));
     }

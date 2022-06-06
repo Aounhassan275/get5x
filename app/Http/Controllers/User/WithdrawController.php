@@ -60,7 +60,7 @@ class WithdrawController extends Controller
           ]+$request->all());
           
           $user->update([
-              'cash_wallet' => $user->cash_wallet -= $request->payment,    
+              'balance' => $user->balance -= $request->payment,    
           ]);
           toastr()->success('Withdraw Request is Submit Successfully');
           return redirect()->back();

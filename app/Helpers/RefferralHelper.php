@@ -140,7 +140,7 @@ class RefferralHelper
     {
         if($chain->left_amount > $chain->right_amount)
         {
-            $amount = $chain->right_amount*2;
+            $amount = $chain->right_amount;
             if($amount > 0)
             {
                 $chain->update([
@@ -162,7 +162,7 @@ class RefferralHelper
             }
         }else if($chain->right_amount > $chain->left_amount)
         {
-            $amount = $chain->left_amount*2;
+            $amount = $chain->left_amount;
             if($amount > 0)
             {
                 $chain->update([
@@ -183,7 +183,7 @@ class RefferralHelper
                 ]);
             }
         }else{
-            $amount = $chain->left_amount*2;
+            $amount = $chain->left_amount;
             if($amount > 0)
             {
                 $chain->update([

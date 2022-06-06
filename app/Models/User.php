@@ -325,7 +325,7 @@ class User extends Authenticatable
         $product_cost = $price;
         $order_price = Order::sum('price');
         $amount = $this->package->price - $order_price;
-        if($amount > $product_cost && $this->cash_wallet > 150)
+        if($amount > $product_cost && $this->balance > 150)
         {
             return true;
         }else{

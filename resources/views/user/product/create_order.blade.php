@@ -106,7 +106,7 @@
                 <div class="single-promo promo3">
                     <p>
                         You Don't Have amount to purchase that product.May your Remaining Amount is {{Auth::user()->remainingProductPrice()}} is less than order amount is PKR {{$product->price}} 
-                        and delivery cost is PKR 150 So may your balance in cash Wallet {{Auth::user()->cash_wallet}} is less than delivery cost.
+                        and delivery cost is PKR 150 So may your balance in e-wallet {{Auth::user()->balance}} is less than delivery cost.
                     </p>
                 </div>
             </div>
