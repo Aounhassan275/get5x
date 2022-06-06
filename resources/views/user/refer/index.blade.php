@@ -82,6 +82,7 @@
                                 <th>Sr#</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Phone</th>
                                 <th>Refer By</th>
                                 <th>Placement</th>
                                 <th>Type</th>
@@ -95,6 +96,7 @@
                                     <td>{{$key + 1}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
+                                    <td>{{$user->phone}}</td>
                                     
                                     <td>
                                         @if($user->refer_by)

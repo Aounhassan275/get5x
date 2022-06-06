@@ -56,11 +56,12 @@ class WithdrawController extends Controller
             return redirect()->back();
         }
           Withdraw::create([
-              'user_id' => $user->id
+              'user_id' => $user->id,
+              'status' => "in process",
           ]+$request->all());
           
           $user->update([
-              'balance' => $user->balance -= $request->payment,    
+              'balance' => $user->balance - $request->payment,    
           ]);
           toastr()->success('Withdraw Request is Submit Successfully');
           return redirect()->back();
