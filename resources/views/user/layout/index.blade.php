@@ -46,6 +46,7 @@
                             <li><a href="{{route('user.product.index')}}"><i class="fa fa-user"></i> Products</a></li>
                             <li><a href="{{route('user.order.index')}}"><i class="fa fa-user"></i> Orders</a></li>
                             @endif
+                            <li><a href="#"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
                             <li><a href="{{route('user.logout')}}"><i class="fa fa-user"></i> Logout</a></li>
                         </ul>
                     </div>
