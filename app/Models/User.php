@@ -338,4 +338,19 @@ class User extends Authenticatable
         $amount = $this->package->price - $order_price;
         return $amount;
     }
+    public function incomeLimit(){
+   
+        if($this->a_date)
+        {
+            $income_limit = Earning::where('user_id',$this->id)->whereBetween('created_at',[$this->a_date,Carbon::tomorrow()])->sum('price');
+            if($income_limit >= $this->package->income_limit)
+            {
+                return false;
+            }
+            return true;
+        }else{
+            return true;
+        }
+        
+    }
 }

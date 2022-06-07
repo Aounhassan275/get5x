@@ -89,6 +89,9 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
         /******************ORDER ROUTES****************/
         Route::get('order/deliver/{id}', 'OrderController@orderDelivers')->name('order.deliver');  
         Route::resource('order', 'OrderController');  
+        /******************EARNING ROUTES****************/
+       Route::view('earning/direct_income', 'admin.earning.direct')->name('earning.direct_income');
+       Route::view('earning/matching_income', 'admin.earning.matching')->name('earning.matching_income');
 });
 });
 /******************USER PANELS ROUTES****************/

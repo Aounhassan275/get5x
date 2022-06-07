@@ -136,6 +136,7 @@ class FrontendController extends Controller
                 'auto_wallet' => 0
             ]);
         }
-        return 'Done';
+        toastr()->success('Earning Transfer Successfully');
+        return back();
     }
 }

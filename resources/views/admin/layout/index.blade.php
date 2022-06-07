@@ -141,6 +141,15 @@
 							<li class="sidebar-item {{Request::is('admin/order')?'active':''}}"><a class="sidebar-link" href="{{route('admin.order.index')}}">Orders</a></li>
 						</ul>
 					</li>	
+					<li class="sidebar-item {{Request::is('admin/earning/*')  ?'active':''}}">
+						<a href="{{url('#earning')}}" data-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Earning</span>
+						</a>
+						<ul id="earning" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item {{Request::is('admin/earning/matching_income')?'active':''}}"><a class="sidebar-link" href="{{route('admin.earning.matching_income')}}">Matching</a></li>
+							<li class="sidebar-item {{Request::is('admin/earning/direct_income')?'active':''}}"><a class="sidebar-link" href="{{route('admin.earning.direct_income')}}">Direct</a></li>
+						</ul>
+					</li>	
 					@endif
 					<li class="sidebar-item {{Request::is('admin.profile.index')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin.profile.index')}}">

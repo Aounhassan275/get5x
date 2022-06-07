@@ -13,4 +13,12 @@ class Earning extends Model
     {
         return $this->belongsTo('App\Models\User','user_id');
     }
+    public static function direct_income()
+    {
+        return (New static)::where('type','direct_income')->get();
+    }
+    public static function matching_income()
+    {
+        return (New static)::where('type','matching_income')->get();
+    }
 }
