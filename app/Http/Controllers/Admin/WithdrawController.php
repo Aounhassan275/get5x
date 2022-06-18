@@ -42,10 +42,6 @@ class WithdrawController extends Controller
         $withdraw->update([
             'status' => 'Completed',
         ]);     
-        $flash_income= CompanyAccount::flash_income();
-        $flash_income->update([
-          'balance' => $flash_income->balance -= $withdraw->payment,
-        ]);
         toastr()->success('Withdraw is Completed Now');
 
         return redirect()->back();

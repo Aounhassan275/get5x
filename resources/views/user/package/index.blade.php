@@ -34,13 +34,13 @@
                             </tr>
                             <tr class="cart-subtotal">
                                 <th>Direct Income</th>
-                                <td><span class="amount">PKR {{$package->matching_income}} /-</span>
+                                <td><span class="amount">{{$package->matching_income}} %</span>
                                 </td>
                             </tr>
 
                             <tr class="cart-subtotal">
                                 <th>Matching Income</th>
-                                <td><span class="amount">PKR {{$package->direct_income}} /-</span>
+                                <td><span class="amount">{{$package->direct_income}} %</span>
                                 </td>
                             </tr>
                             <tr class="cart-subtotal">

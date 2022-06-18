@@ -95,4 +95,13 @@ class OrderController extends Controller
         toastr()->success('Order Delivered Successfully');
         return redirect()->back();
     }
+    public function orderonHolds($id)
+    {
+        $order = Order::find($id);
+        $order->update([
+            'status' => 'on Hold'
+        ]);
+        toastr()->success('Order is in Onhold.');
+        return redirect()->back();
+    }
 }

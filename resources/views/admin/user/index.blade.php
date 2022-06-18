@@ -19,6 +19,7 @@
                         <th style="width:auto;">User Name</th>
                         <th style="width:auto;">User Email </th>
                         <th style="width:auto;">User Balance </th>
+                        <th style="width:auto;">User Auto Wallet </th>
                         <th style="width:auto;">User Refer By </th>
                         <th style="width:auto;">User Placement </th>
                         <th style="width:auto;">Total Placement </th>
@@ -37,6 +38,7 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->balance}}</td>
+                        <td>{{$user->auto_wallet}}</td>
                         <td>{{$user->refer_by_name($user->refer_by)}}</td>
                         <td>{{$user->placement()}}</td>
                         <td>{{App\Models\User::where('left_refferal',$user->id)->orWhere('right_refferal',$user->id)->count()}}</td>

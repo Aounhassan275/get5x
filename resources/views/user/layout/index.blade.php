@@ -147,10 +147,9 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Social Links</h2>
                         <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/112269564835093/posts/pfbi/?app=" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/groups/1730526797300451/?ref=share" target="_blank"><i class="fa fa-facebook"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                         </div>                     
                     </div>
                 </div>

@@ -35,8 +35,11 @@
                 <td>{{$order->name}}</td>
                 <td>{{$order->price}}</td>
                 <td>{{$order->delivery_cost}}</td>
-                <td>{{$order->status}}</td>
+                <td>
+                    <span class="badge badge-">{{$order->status}}</span>
+                </td>
                 <td>{{Carbon\Carbon::parse($order->created_at)->format('d M,Y')}}</td>
+                <td><a href="{{route('admin.order.onhold',$order->id)}}"><button class="btn btn-info">on Hold</button></a></td>
                 <td><a href="{{route('admin.order.deliver',$order->id)}}"><button class="btn btn-primary">Deliver</button></a></td>
                 <td>
                     <form action="{{route('admin.order.destroy',$order->id)}}" method="POST">

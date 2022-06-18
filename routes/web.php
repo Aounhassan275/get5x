@@ -88,6 +88,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin'], funct
         Route::resource('product_image', 'ProductImageController');
         /******************ORDER ROUTES****************/
         Route::get('order/deliver/{id}', 'OrderController@orderDelivers')->name('order.deliver');  
+        Route::get('order/onhold/{id}', 'OrderController@orderonHolds')->name('order.onhold');  
         Route::resource('order', 'OrderController');  
         /******************EARNING ROUTES****************/
        Route::view('earning/direct_income', 'admin.earning.direct')->name('earning.direct_income');
