@@ -39,7 +39,7 @@
                             @foreach (Auth::user()->orders as $key => $order)
                                 <tr class="cart-subtotal">
                                     <td>{{$key + 1}}</td>
-                                    <td >{{$order->name}}</td>
+                                    <td>{{$order->product->name}}</td>
                                     <td >PKR {{$order->price}}</td>
                                     <td >PKR {{$order->delivery_cost}}</td>
                                     <td >{{$order->address}}</td>

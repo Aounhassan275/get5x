@@ -24,22 +24,6 @@
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Products</h2>
-                    @foreach(App\Models\Product::orderby('created_at','desc')->get()->take(10) as $product)
-                    <div class="thubmnail-recent">
-                        <img src="{{asset(@$product->images->first()->image)}}" class="recent-thumb" alt="">
-                        <h2><a href="{{route('product.show',str_replace(' ', '_',$product->name))}}">{{@$product->name}}</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>PKR {{@$product->price}}</ins>                         
-                        </div>                             
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
@@ -104,6 +88,22 @@
                     </div>                       
                 </div>                    
             </div>
+            <div class="col-md-4">
+                
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Products</h2>
+                    @foreach(App\Models\Product::orderby('created_at','desc')->get()->take(10) as $product)
+                    <div class="thubmnail-recent">
+                        <img src="{{asset(@$product->images->first()->image)}}" class="recent-thumb" alt="">
+                        <h2><a href="{{route('product.show',str_replace(' ', '_',$product->name))}}">{{@$product->name}}</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>PKR {{@$product->price}}</ins>                         
+                        </div>                             
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

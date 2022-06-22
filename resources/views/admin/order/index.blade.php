@@ -17,11 +17,14 @@
                     <th style="width:auto;">Sr No.</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email</th>
+                    <th style="width:auto;">User Phone</th>
                     <th style="width:auto;">Product Name</th>
                     <th style="width:auto;">Product Price</th>
                     <th style="width:auto;">Product Delivery Cost</th>
+                    <th style="width:auto;">Addreess</th>
                     <th style="width:auto;">Status</th>
                     <th style="width:auto;">Date</th>
+                    <th style="width:auto;">Action</th>
                     <th style="width:auto;">Action</th>
                     <th style="width:auto;">Action</th>
                 </tr>
@@ -32,12 +35,14 @@
                     <td>{{$key+1}}</td>
                 <td>{{$order->user->name}}</td>
                 <td>{{$order->user->email}}</td>
-                <td>{{$order->name}}</td>
+                <td>{{$order->user->phone}}</td>
+                <td>{{$order->product->name}}</td>
                 <td>{{$order->price}}</td>
                 <td>{{$order->delivery_cost}}</td>
                 <td>
                     <span class="badge badge-">{{$order->status}}</span>
                 </td>
+                <td>{{$order->address}}</td>
                 <td>{{Carbon\Carbon::parse($order->created_at)->format('d M,Y')}}</td>
                 <td><a href="{{route('admin.order.onhold',$order->id)}}"><button class="btn btn-info">on Hold</button></a></td>
                 <td><a href="{{route('admin.order.deliver',$order->id)}}"><button class="btn btn-primary">Deliver</button></a></td>
