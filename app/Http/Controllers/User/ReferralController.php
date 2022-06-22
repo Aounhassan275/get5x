@@ -305,7 +305,7 @@ class ReferralController extends Controller
         //     }            
         // }
         // Auth::logout();
-        toastr()->success('You Added In Tree Successfully.');
+        toastr()->warning('You Added In Tree Successfully.');
         return redirect('user/dashboard');
     }
     public function showTree($id)
@@ -313,7 +313,7 @@ class ReferralController extends Controller
         $user = User::find($id);
         if($user->checkStatus() == 'expired')   
         {
-          toastr()->success('Your Package is Expire');
+          toastr()->warning('Your Package is Expire');
            return redirect(route('user.dashboard.index'));
         }
         // if($user->main_owner != Auth::user()->main_owner)
@@ -340,7 +340,7 @@ class ReferralController extends Controller
         $user = User::find($id);
         if($user->checkStatus() == 'expired')   
         {
-          toastr()->success('Your Package is Expire');
+          toastr()->warning('Your Package is Expire');
            return redirect(route('user.dashboard.index'));
         }
         return view('user.refer.right_refferal')->with('user',$user);
@@ -350,7 +350,7 @@ class ReferralController extends Controller
         $user = User::find($id);
         if($user->checkStatus() == 'expired')   
         {
-          toastr()->success('Your Package is Expire');
+          toastr()->warning('Your Package is Expire');
            return redirect(route('user.dashboard.index'));
         }
         return view('user.refer.left_refferal')->with('user',$user);
@@ -360,7 +360,7 @@ class ReferralController extends Controller
         $user = Auth::user(); 
         if($user->checkStatus() == 'expired')   
         {
-          toastr()->success('Your Package is Expire');
+          toastr()->warning('Your Package is Expire');
            return redirect(route('user.dashboard.index'));
         }
         $company_account= CompanyAccount::find(1);
@@ -647,7 +647,7 @@ class ReferralController extends Controller
             
         // }
         // Auth::logout();
-        toastr()->success('You Added In Tree Successfully.');
+        toastr()->warning('You Added In Tree Successfully.');
         return redirect('user/dashboard');
     }
 }

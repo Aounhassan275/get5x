@@ -17,7 +17,7 @@ class PackageController extends Controller
     {
       if(Auth::user()->a_date == Carbon::today())
       {
-        toastr()->error('Already Purchase Package');
+        toastr()->warning('Already Purchase Package');
         return redirect()->route('user.dashboard.index');
       } 
       return view('user.package.index');

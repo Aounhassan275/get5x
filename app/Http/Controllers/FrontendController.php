@@ -47,7 +47,7 @@ class FrontendController extends Controller
     }
     public function autoship_cronjob()
     {
-        $users = User::where('auto_wallet','>=','500')->get();
+        $users = User::where('auto_wallet','500')->get();
         foreach($users as $user)
         {
             $flash_income= CompanyAccount::flash_income();

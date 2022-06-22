@@ -62,7 +62,7 @@ class DepositController extends Controller
             ]);
 
             if($validator->fails()){
-                toastr()->error('Transaction Id already exists');
+                toastr()->warning('Transaction Id already exists');
                 return redirect()->back();
             }
 
@@ -75,7 +75,7 @@ class DepositController extends Controller
             'status' => 'onHold'
         ]);
 
-        toastr()->success('Your Deposit Request Has Been successfully Submitted.Please Wait 24 Hour For Activation.');
+        toastr()->warning('Your Deposit Request Has Been successfully Submitted.Please Wait 24 Hour For Activation.');
         
         return redirect(route('user.dashboard.index'));
     }
@@ -83,7 +83,7 @@ class DepositController extends Controller
     {
         if(Auth::user()->balance <= 0)
         {
-            toastr()->success('Insufficiant Balance.');
+            toastr()->warning('Insufficiant Balance.');
             return redirect(route('user.dashboard.index'));
         }
         $user= User::find(Auth::user()->id);
@@ -105,7 +105,7 @@ class DepositController extends Controller
         Auth::user()->update([
             'balance' => $user->balance -= $package->price,    
         ]);
-        toastr()->success('Your Package Active Successfully.');
+        toastr()->warning('Your Package Active Successfully.');
         return redirect(route('user.dashboard.index'));
     }
 

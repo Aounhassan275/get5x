@@ -27,6 +27,8 @@
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>User Refer By</th>
+                                <th>Left Referral</th>
+                                <th>Right Referral</th>
                                 <th>User Type</th>
                                 <th>User Status</th>
                                 <th>User E-Wallet</th>
@@ -40,6 +42,8 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->refer_by_name($user->refer_by)}}</td>
+                                <td>{{count($user->getOrginalLeft())}}</td>
+                                <td>{{count($user->getOrginalRight())}}</td>
                                 <td>{{$user->refer_type}}</td>
                                 <td>
                                 @if ($user->checkstatus() =='old')

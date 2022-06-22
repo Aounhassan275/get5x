@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th style="width:auto;">Sr No.</th>
+                    <th style="width:auto;">User Image</th>
                     <th style="width:auto;">User Name</th>
                     <th style="width:auto;">User Email</th>
                     <th style="width:auto;">User Phone</th>
@@ -33,26 +34,27 @@
                 @foreach (App\Models\Order::all() as $key => $order)
                 <tr> 
                     <td>{{$key+1}}</td>
-                <td>{{$order->user->name}}</td>
-                <td>{{$order->user->email}}</td>
-                <td>{{$order->user->phone}}</td>
-                <td>{{$order->product->name}}</td>
-                <td>{{$order->price}}</td>
-                <td>{{$order->delivery_cost}}</td>
-                <td>{{$order->address}}</td>
-                <td>
-                    <span class="badge badge-primary">{{$order->status}}</span>
-                </td>
-                <td>{{Carbon\Carbon::parse($order->created_at)->format('d M,Y')}}</td>
-                <td><a href="{{route('admin.order.onhold',$order->id)}}"><button class="btn btn-info">on Hold</button></a></td>
-                <td><a href="{{route('admin.order.deliver',$order->id)}}"><button class="btn btn-primary">Deliver</button></a></td>
-                <td>
-                    <form action="{{route('admin.order.destroy',$order->id)}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                    <button class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
+                    <td><img src="{{asset($order->user->image)}}" height="100" width="100" alt=""></td>
+                    <td>{{$order->user->name}}</td>
+                    <td>{{$order->user->email}}</td>
+                    <td>{{$order->user->phone}}</td>
+                    <td>{{$order->product->name}}</td>
+                    <td>{{$order->price}}</td>
+                    <td>{{$order->delivery_cost}}</td>
+                    <td>{{$order->address}}</td>
+                    <td>
+                        <span class="badge badge-primary">{{$order->status}}</span>
+                    </td>
+                    <td>{{Carbon\Carbon::parse($order->created_at)->format('d M,Y')}}</td>
+                    <td><a href="{{route('admin.order.onhold',$order->id)}}"><button class="btn btn-info">on Hold</button></a></td>
+                    <td><a href="{{route('admin.order.deliver',$order->id)}}"><button class="btn btn-primary">Deliver</button></a></td>
+                    <td>
+                        <form action="{{route('admin.order.destroy',$order->id)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                        <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

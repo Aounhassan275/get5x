@@ -81,7 +81,7 @@ class UserController extends Controller
             ]);
         }
         $user->update($request->except('password'));
-        toastr()->success('Your Informations Updated successfully');
+        toastr()->warning('Your Informations Updated successfully');
         return redirect()->back();
     }
 
@@ -100,7 +100,7 @@ class UserController extends Controller
         $user = Auth::user();
         if($user->checkStatus() == 'expired')   
         {
-          toastr()->success('Your Package is Expire');
+          toastr()->warning('Your Package is Expire');
            return redirect(route('user.dashboard.index'));
         }
         return view('user.refer.index')->with('user',$user);
@@ -110,7 +110,7 @@ class UserController extends Controller
         $user = User::find($id);
         if($user->checkStatus() == 'expired')   
         {
-          toastr()->success('Your Package is Expire');
+          toastr()->warning('Your Package is Expire');
            return redirect(route('user.dashboard.index'));
         }
         $company_account= CompanyAccount::find(1);

@@ -26,13 +26,13 @@
     <link rel="stylesheet"  href="{{asset('front/css/owl.carousel.css')}}">
     <link rel="stylesheet"  href="{{asset('front/css/style.css')}}">
     <link rel="stylesheet"  href="{{asset('front/css/responsive.css')}}">
-    {{-- @toastr_css --}}
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    @toastr_css
   </head>
   <body>
    
@@ -187,8 +187,8 @@
     <!-- Slider -->
     <script type="text/javascript" src="{{asset('front/js/bxslider.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/js/script.slider.js')}}"></script>
-    {{-- @toastr_js --}}
-    {{-- @toastr_render --}}
+    @toastr_js
+    @toastr_render
     @yield('scripts')
   </body>
 </html>

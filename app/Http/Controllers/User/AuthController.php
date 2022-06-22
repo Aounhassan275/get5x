@@ -17,7 +17,7 @@ class AuthController extends Controller
         if($user){
             if($user->status == 'block')
             {
-            toastr()->error('You are Blocked,Kindly Contact Support');
+            toastr()->warning('You are Blocked,Kindly Contact Support');
             return redirect()->back();
              }
         }
@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         $user = User::where('name',$request->name)->first();
         if(!$user){
-            toastr()->error('Please register your account');
+            toastr()->warning('Please register your account');
             return redirect()->back();
         }
 
@@ -41,10 +41,10 @@ class AuthController extends Controller
             //         $user->status == 'pending';
             //     }
             // }
-            toastr()->success('Login Successfully');
+            toastr()->warning('Login Successfully');
             return redirect('user/dashboard');
         } else {
-            toastr()->error('Wrong Password','Please Contact Support');
+            toastr()->warning('Wrong Password','Please Contact Support');
             return redirect()->back();
             
         }
@@ -53,7 +53,7 @@ class AuthController extends Controller
     {
         if($request->password != $request->confirm_password)
         {
-            toastr()->error('Password do not match');
+            toastr()->warning('Password do not match');
             return redirect()->back();
         }
         if($request->code)
@@ -70,7 +70,7 @@ class AuthController extends Controller
                 ]);
                 
                 if($validator->fails()){
-                    toastr()->error('Username  already exists');
+                    toastr()->warning('Username  already exists');
                     return redirect()->back();
                 }
                 if($user->main_owner)
@@ -109,10 +109,10 @@ class AuthController extends Controller
             ]);
 
             if($validator->fails()){
-                toastr()->error('Username  already exists');
+                toastr()->warning('Username  already exists');
                 return redirect()->back();
             }
-            toastr()->error('Contact Support.');
+            toastr()->warning('Contact Support.');
             return redirect()->back();
             User::create([
                 'left' => uniqid(),
@@ -121,7 +121,7 @@ class AuthController extends Controller
             ]+$request->all());
             
         }
-        toastr()->success('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
+        toastr()->warning('Your Account Has Been successfully Created, Please Login and See Next Step Guides.');
         return redirect(route('user.login'));
     }
     public function code($code)
@@ -133,14 +133,14 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        toastr()->success('You Logout Successfully');
+        toastr()->warning('You Logout Successfully');
         return redirect('/');
     }
 
     public function sendVerification(Request $request){
         $user = User::where('name',$request->email)->first();
         if(!$user){
-            toastr()->error('User not found');
+            toastr()->warning('User not found');
             return redirect()->back();
         }
         $user->verification = uniqid();
@@ -155,10 +155,10 @@ class AuthController extends Controller
             $user->update([
                 'password' => $request->password
             ]);
-            toastr()->success('Password reset successfully');
+            toastr()->warning('Password reset successfully');
             return redirect('user/login');
         } else {
-            toastr()->error('Incorrect code');
+            toastr()->warning('Incorrect code');
             return redirect()->back();
         }
     }

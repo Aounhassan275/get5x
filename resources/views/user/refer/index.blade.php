@@ -85,6 +85,8 @@
                                 <th>Phone</th>
                                 <th>Refer By</th>
                                 <th>Placement</th>
+                                <th>Left Referral</th>
+                                <th>Right Referral</th>
                                 <th>Type</th>
                                 <th>Status</th>
                                 <th>Earning</th>
@@ -104,6 +106,8 @@
                                         @endif
                                     </td>
                                     <td>{{$user->placement()}}</td>
+                                    <td>{{count($user->getOrginalLeft())}}</td>
+                                    <td>{{count($user->getOrginalRight())}}</td>
                                     <td>{{$user->refer_type}}</td>
                                     <td>
                                         @if($user->checkstatus() =='old')

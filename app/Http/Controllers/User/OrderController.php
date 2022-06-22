@@ -41,6 +41,7 @@ class OrderController extends Controller
         Auth::user()->update([
             'balance' => Auth::user()->balance -= 150
         ]);
+        toastr()->warning('Order Created Successfully!.');
         return redirect(route('user.order.index'));
     }
 
