@@ -323,7 +323,7 @@ class User extends Authenticatable
     public function orderStatus($price)
     {
         $product_cost = $price;
-        $order_price = Order::sum('price');
+        $order_price = $this->orders()->sum('price');
         $amount = $this->package->price - $order_price;
         if($amount >= $product_cost && $this->balance >= 150)
         {
@@ -334,7 +334,7 @@ class User extends Authenticatable
     }
     public function remainingProductPrice()
     {
-        $order_price = Order::sum('price');
+        $order_price = $this->orders()->sum('price');
         $amount = $this->package->price - $order_price;
         return $amount;
     }
