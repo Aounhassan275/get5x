@@ -39,10 +39,10 @@
                 <td>{{$order->product->name}}</td>
                 <td>{{$order->price}}</td>
                 <td>{{$order->delivery_cost}}</td>
-                <td>
-                    <span class="badge badge-">{{$order->status}}</span>
-                </td>
                 <td>{{$order->address}}</td>
+                <td>
+                    <span class="badge badge-primary">{{$order->status}}</span>
+                </td>
                 <td>{{Carbon\Carbon::parse($order->created_at)->format('d M,Y')}}</td>
                 <td><a href="{{route('admin.order.onhold',$order->id)}}"><button class="btn btn-info">on Hold</button></a></td>
                 <td><a href="{{route('admin.order.deliver',$order->id)}}"><button class="btn btn-primary">Deliver</button></a></td>
