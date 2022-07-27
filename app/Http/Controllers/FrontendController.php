@@ -47,23 +47,26 @@ class FrontendController extends Controller
     }
     public function autoship_cronjob()
     {
-        $users = User::where('auto_wallet','500')->get();
+        $users = User::where('auto_wallet','>=','500')->get();
         foreach($users as $user)
         {
+            $user->update([
+                'auto_wallet' => $user->auto_wallet - 500,
+            ]);
             $flash_income= CompanyAccount::flash_income();
             $flash_income->update([
-                'balance' => $flash_income->balance += $user->auto_wallet/100 * 40,
+                'balance' => $flash_income->balance += 500/100 * 40,
             ]);
-            $product_income= CompanyAccount::product_income();
-            $product_income->update([
-                'balance' => $product_income->balance += $user->auto_wallet/100 * 40,
-            ]);
+            // $product_income= CompanyAccount::product_income();
+            // $product_income->update([
+            //     'balance' => $product_income->balance += 500/100 * 40,
+            // ]);
             $matching_income= CompanyAccount::matching_income();
             $matching_income->update([
-                'balance' => $matching_income->balance += $user->auto_wallet/100 * 10,
+                'balance' => $matching_income->balance += 500/100 * 50,
             ]);
-            $direct_income = $user->auto_wallet/100 * 40;
-            $matching_income = $user->auto_wallet/100 * 10;
+            $direct_income = 500/100 * 40;
+            // $matching_income = 500/100 * 10;
             if($user->refer_by)
             {
                 $e_wallet_direct = $direct_income/100 * 80;
@@ -83,57 +86,54 @@ class FrontendController extends Controller
                     'balance' => $flash_income->balance -= $direct_income,
                 ]);
             }
-            if($user->refer_type == 'Left')
-            {
-                $all_lefts = $user->getOrginalUpperLeft();
-                foreach($all_lefts as $key =>  $upper_left)
-                {
-                    if($key == 0)
-                    {
-                        $upper_left->matchingEarning($user->id,$matching_income);
-                    }else{
-                        $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
-                    }
-                    RefferralHelper::ownerMatching($upper_left);
-                }
-            }elseif($user->refer_type == 'Right')
-            {
-                $all_rights = $user->getOrginalUpperRight();
-                foreach($all_rights as $key =>  $upper_right)
-                {
-                    if($key == 0)
-                    {
-                        $upper_right->matchingEarning($user->id,$matching_income);
-                    }else{                    
-                        $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
-                    }
-                    RefferralHelper::ownerMatching($upper_right);
-                }
-            }else{
-                RefferralHelper::ownerMatching($user);
-            }
+            // if($user->refer_type == 'Left')
+            // {
+            //     $all_lefts = $user->getOrginalUpperLeft();
+            //     foreach($all_lefts as $key =>  $upper_left)
+            //     {
+            //         if($key == 0)
+            //         {
+            //             $upper_left->matchingEarning($user->id,$matching_income);
+            //         }else{
+            //             $upper_left->matchingEarning($all_lefts[$key-1]->id,$matching_income);
+            //         }
+            //         RefferralHelper::ownerMatching($upper_left);
+            //     }
+            // }elseif($user->refer_type == 'Right')
+            // {
+            //     $all_rights = $user->getOrginalUpperRight();
+            //     foreach($all_rights as $key =>  $upper_right)
+            //     {
+            //         if($key == 0)
+            //         {
+            //             $upper_right->matchingEarning($user->id,$matching_income);
+            //         }else{                    
+            //             $upper_right->matchingEarning($all_rights[$key-1]->id,$matching_income);
+            //         }
+            //         RefferralHelper::ownerMatching($upper_right);
+            //     }
+            // }else{
+            //     RefferralHelper::ownerMatching($user);
+            // }
 
             $flash_income->update([
-                'balance' => $flash_income->balance += $user->auto_wallet/100 * 1,
+                'balance' => $flash_income->balance += 500/100 * 1,
             ]);
             $expense_income= CompanyAccount::expense_income();
             $expense_income->update([
-                'balance' => $expense_income->balance += $user->auto_wallet/100 * 6,
+                'balance' => $expense_income->balance += 500/100 * 6,
             ]);
             $reward_income= CompanyAccount::reward_income();
             $reward_income->update([
-                'balance' => $reward_income->balance += $user->auto_wallet/100 * 1,
+                'balance' => $reward_income->balance += 500/100 * 1,
             ]);
             $loss_income= CompanyAccount::loss_income();
             $loss_income->update([
-                'balance' => $loss_income->balance += $user->auto_wallet/100 * 1,
+                'balance' => $loss_income->balance += 500/100 * 1,
             ]);
             $salary= CompanyAccount::salary();
             $salary->update([
-                'balance' => $salary->balance += $user->auto_wallet/100 * 1,
-            ]);
-            $user->update([
-                'auto_wallet' => 0
+                'balance' => $salary->balance += 500/100 * 1,
             ]);
         }
         toastr()->success('Earning Transfer Successfully');

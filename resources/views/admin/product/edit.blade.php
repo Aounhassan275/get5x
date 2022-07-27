@@ -93,7 +93,7 @@
                         <td><img src="{{asset($image->image)}}" height="100" width="100" alt=""></td>
                         <td class="table-action">
                             {{-- <a href="{{url('poll/delete',$package->id)}}"><i class="align-middle" data-feather="trash"></i></a> --}}
-                            <form action="{{route('admin.product_image.destroy',$product->id)}}" method="POST">
+                            <form action="{{route('admin.product_image.destroy',$image->id)}}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn"><i class="align-middle" data-feather="trash"></i></button>

@@ -92,6 +92,9 @@
                                 <th>Earning</th>
                             </tr>
                         </thead>
+                        @php 
+                            $total_left = $total_right = $total_earning = 0;
+                        @endphp
                         <tfoot>
                             @foreach (Auth::user()->all_refer() as $key => $user)
                                 <tr class="cart-subtotal">
@@ -118,7 +121,29 @@
                                     <td>{{$user->balance}}</td>
                     
                                 </tr>
+                                
+                                @php 
+                                    $total_left += count($user->getOrginalLeft());
+                                    $total_right += count($user->getOrginalRight());
+                                    $total_earning += $user->balance;
+                                @endphp
                             @endforeach
+                            <tr class="cart-subtotal">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                
+                                <td>
+                                </td>
+                                <td></td>
+                                <td>{{@$total_left}}</td>
+                                <td>{{@$total_right}}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{@$total_earning}}</td>
+                
+                            </tr>
                         </tfoot>
                     </table>
                 </div>

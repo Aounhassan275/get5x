@@ -15,7 +15,7 @@
 		</div>
 	</div>
 </div>
-<div class="promo-area">
+<div class="promo-area" >
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
@@ -35,7 +35,7 @@
         </div>
     </div>
 </div> <!-- End promo area -->
-<div class="promo-area">
+<div class="promo-area" style="margin-top: -70px!important;">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
@@ -65,7 +65,7 @@
     </div>
 </div> <!-- End promo area -->
 @if(Auth::user()->package)
-<div class="promo-area">
+<div class="promo-area" style="margin-top: -70px!important;">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
@@ -94,7 +94,7 @@
     </div>
 </div> <!-- End promo area -->
 @endif
-<div class="promo-area">
+<div class="promo-area" style="margin-top: -70px!important;">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">

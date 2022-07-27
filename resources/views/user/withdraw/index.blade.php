@@ -26,6 +26,7 @@
                                 <th>Amount</th>
                                 <th>Method</th>
                                 <th>Status</th>
+                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -45,6 +46,7 @@
                                         <span class="badge badge-primary">{{$withdraw->status}}</span>
                                         @endif
                                     </td>
+                                    <td >{{$withdraw->created_at->format('M d,Y h:i A')}}</td>
                                     <td>
                                         @if($withdraw->status=="Completed")
                                         @elseif($withdraw->status=="in process")
